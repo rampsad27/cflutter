@@ -1,7 +1,6 @@
-// //Simple Calculator with Enums
 import 'dart:io';
 
-enum ColorEnum {
+enum CalculatorEnum {
   div,
   mul,
   sub,
@@ -10,30 +9,37 @@ enum ColorEnum {
 
 void main() {
   print("Enter a number: ");
-  int a = int.parse(stdin.readLineSync()!);
+  double a = double.parse(stdin.readLineSync()!);
 
   print("Enter another number: ");
-  int b = int.parse(stdin.readLineSync()!);
+  double b = double.parse(stdin.readLineSync()!);
 
   print("Choose operation (div, mul, sub, add): ");
-  String operation = stdin.readLineSync()!;
+  String operation = stdin.readLineSync()!.toLowerCase();
 
   performOperation(a, b, operation);
 }
 
-void performOperation(int a, int b, operation) {
+void performOperation(double a, double b, String operation) {
+  double result;
+
   switch (operation) {
-    case ColorEnum.div:
-      print("${a / b}");
+    case 'div':
+      result = a / b;
       break;
-    case ColorEnum.mul:
-      print("${a * b}");
+    case 'mul':
+      result = a * b;
       break;
-    case ColorEnum.sub:
-      print("${a - b}");
+    case 'sub':
+      result = a - b;
       break;
-    case ColorEnum.add:
-      print("${a + b}");
+    case 'add':
+      result = a + b;
       break;
+    default:
+      print("Invalid operation");
+      return;
   }
+
+  print("Result: $result");
 }
