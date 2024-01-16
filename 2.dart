@@ -1,19 +1,23 @@
-//Check if a number is a palindrome
+// //Check if a number is a palindrome
 import 'dart:io';
 
-void main() {
-  print("number giv");
-  String userInput = stdin.readLineSync()!;
-  int num = int.parse(userInput);
+checkPalindrom(int number) {
+  String numToString = number.toString();
 
-  palin(num);
+  return numToString == numToString.split('').reversed.join();
 }
 
-void palin(num) {
-  int y = int.parse(num.toString().split('').reversed.join(''));
-  if (num == y) {
-    print("it is palindrome");
-  } else {
-    print(" it is not palindrome");
+void main() {
+  try {
+    print("enter a number:");
+    int stoNum = int.parse(stdin.readLineSync()!);
+
+    if (checkPalindrom(stoNum)) {
+      print("$stoNum is palindrome");
+    } else {
+      print("$stoNum is not");
+    }
+  } catch (e) {
+    print("Must enter a integer");
   }
 }
