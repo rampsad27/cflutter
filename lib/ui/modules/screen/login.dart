@@ -69,7 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                       TextFormField(
                         controller: _controller,
                         validator: (value) {
-                          return "Enter data";
+                          if (value == null || value.isEmpty) {
+                            return "Enter data";
+                          }
+                          return null;
                         },
                         decoration: const InputDecoration(
                           hintText: "Phone number, username or email",
@@ -79,7 +82,10 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _pcontroller,
                         obscureText: !_isPasswordVisible,
                         validator: (value) {
-                          return "Wrong Password";
+                          if (value == null || value.isEmpty) {
+                            return "Wrong password";
+                          }
+                          return null;
                         },
                         decoration: InputDecoration(
                           hintText: "Password",
