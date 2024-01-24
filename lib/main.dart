@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ig/ui/modules/screen/feed.dart';
+// import 'package:ig/ui/modules/screen/feed.dart';
 import 'package:ig/ui/modules/screen/login.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home:
-          //  FeedScreen(),
+          // FeedScreen(),
           LoginPage(),
     );
   }
