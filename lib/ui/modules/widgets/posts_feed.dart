@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:readmore/readmore.dart';
 import 'package:ig/ui/modules/screen/story.dart';
 import 'package:ig/ui/modules/widgets/story_design.dart';
 // import 'package:ig/ui/modules/widgets/line.dart';
@@ -44,8 +44,8 @@ class _PostsFeedState extends State<PostsFeed> {
           itemCount: widget.postModelList.length,
           itemBuilder: (context, index) {
             return Container(
-              height: 600,
-              margin: const EdgeInsets.only(bottom: 10),
+              height: 610,
+              margin: const EdgeInsets.only(bottom: 20),
               // color: const Color.fromARGB(255, 131, 170, 224),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +97,7 @@ class _PostsFeedState extends State<PostsFeed> {
                     child: Image.network(
                       widget.postModelList[index].imageUrl,
                       width: double.infinity,
-                      // height: double.infinity,
+                      // height: 300,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -128,19 +128,39 @@ class _PostsFeedState extends State<PostsFeed> {
                           ),
                         ),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              widget.postModelList[index].postedby,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              widget.postModelList[index].caption,
-                              style: const TextStyle(
-                                fontSize: 16,
+                            Expanded(
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: widget
+                                            .postModelList[index].postedby,
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                        children: [
+                                          WidgetSpan(
+                                            child: ReadMoreText(
+                                              widget
+                                                  .postModelList[index].caption,
+                                              trimLines: 2,
+                                              colorClickableText: Colors.pink,
+                                              trimMode: TrimMode.Line,
+                                              trimCollapsedText: 'Show more',
+                                              trimExpandedText: 'Show less',
+                                              moreStyle: const TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ]),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

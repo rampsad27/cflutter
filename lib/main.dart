@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ig/ui/modules/screen/feed.dart';
-// import 'package:ig/ui/modules/screen/login.dart';
+// import 'package:ig/ui/modules/screen/feed.dart';
+import 'package:ig/ui/modules/screen/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: FeedScreen(),
-      // LoginPage(),
+      home:
+          // FeedScreen(),
+          LoginPage(),
     );
   }
 }
