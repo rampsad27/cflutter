@@ -7,7 +7,7 @@ List<PostModel> feedData = [
     likes: "347",
     comments: "62",
     caption:
-        "Hello! Velit anim tempor culpa labore consectetur sit. Minim et ipsum exercitation ex Lorem id. Exercitation labore officia eiusmod elit cupidatat ut. ",
+        "Hello! t anim tempor culpa labore officia eiusmod elit cupidatat ut. ",
     imageUrl:
         "https://images.unsplash.com/photo-1706019175883-38f6a24730fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D",
     imagecUrl:

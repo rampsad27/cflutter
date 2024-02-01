@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ig/ui/data/profilenum_data.dart';
 import 'package:ig/ui/modules/components/buildcircularavatar.dart';
 import 'package:ig/ui/modules/components/buildprofilebutton.dart';
 import 'package:ig/ui/modules/components/buildprofileiconbutton.dart';
@@ -18,7 +19,7 @@ class _MyProfileState extends State<MyProfile> {
   @override
   void initState() {
     scrollController.addListener(() {
-      if (scrollController.position.minScrollExtent < 130) {
+      if (scrollController.position.minScrollExtent < 1) {
         setState(() {
           showTitle = true;
         });
@@ -37,8 +38,9 @@ class _MyProfileState extends State<MyProfile> {
           headerSliverBuilder: (context, value) {
             return [
               SliverAppBar(
-                pinned: true,
+                pinned: false,
                 floating: true,
+                snap: true,
                 title: const Text(
                   'madhu.ram',
                   style: TextStyle(
@@ -59,26 +61,31 @@ class _MyProfileState extends State<MyProfile> {
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                   child: Column(
                     children: [
                       const Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           CircleAvatar(
                             radius: 40,
                             backgroundImage: NetworkImage(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF1IwK6-SxM83UpFVY6WtUZxXx-phss_gAUfdKbkTfau6VWVkt",
+                              "https://img.etimg.com/thumb/width-640,height-480,imgsize-59990,resizemode-75,msid-95129274/news/international/us/national-black-cat-day-see-why-us-celebrates-this-occasion.jpg",
                             ),
                           ),
-                          SizedBox(width: 8),
-                          Text("hyatteri"),
+                          SizedBox(width: 60),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ProfileNum(value: "23", title: "Posts"),
+                              SizedBox(width: 20),
+                              ProfileNum(value: "89", title: "Followers"),
+                              SizedBox(width: 20),
+                              ProfileNum(value: "76", title: "Following"),
+                            ],
+                          ),
                         ],
-                      ),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "hi",
-                        ),
                       ),
                       const SizedBox(height: 10),
                       Row(
@@ -94,76 +101,99 @@ class _MyProfileState extends State<MyProfile> {
                       Row(
                         children: [
                           buildCircleAvatar(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF1IwK6-SxM83UpFVY6WtUZxXx-phss_gAUfdKbkTfau6VWVkt",
+                            "https://img.etimg.com/thumb/width-640,height-480,imgsize-59990,resizemode-75,msid-95129274/news/international/us/national-black-cat-day-see-why-us-celebrates-this-occasion.jpg",
                             30,
                           ),
                           const SizedBox(width: 10),
                           buildCircleAvatar(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF1IwK6-SxM83UpFVY6WtUZxXx-phss_gAUfdKbkTfau6VWVkt",
+                            "https://img.etimg.com/thumb/width-640,height-480,imgsize-59990,resizemode-75,msid-95129274/news/international/us/national-black-cat-day-see-why-us-celebrates-this-occasion.jpg",
                             30,
                           ),
                         ],
                       ),
                       const SizedBox(height: 10),
-                      const TabBar(
-                        tabs: [
-                          Tab(
-                            icon: Icon(Icons.view_list),
-                          ),
-                          Tab(
-                            icon: Icon(Icons.video_library_outlined),
-                          ),
-                          Tab(
-                            icon: Icon(Icons.person_pin_outlined),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
               ),
+              const SliverToBoxAdapter(
+                child: TabBar(
+                  indicator: UnderlineTabIndicator(
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: Colors.black,
+                    ),
+                    insets: EdgeInsets.symmetric(horizontal: 75),
+                  ),
+                  tabs: [
+                    Tab(
+                      icon: Icon(Icons.grid_on_sharp),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.video_library_outlined),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.person_pin_outlined),
+                    ),
+                  ],
+                ),
+              )
             ];
           },
           body: TabBarView(
             children: [
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+              MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 1,
+                    mainAxisSpacing: 1,
+                  ),
+                  itemCount: 19,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      // height: 120,
+                      // margin: const EdgeInsets.all(2),
+                      color: const Color.fromARGB(255, 156, 163, 226),
+                    );
+                  },
                 ),
-                itemCount: 19,
-                itemBuilder: (context, index) {
-                  return Container(
-                    // height: 120,
-                    margin: const EdgeInsets.all(2),
-                    color: const Color.fromARGB(255, 156, 163, 226),
-                  );
-                },
               ),
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+              MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                  ),
+                  itemCount: 12,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      // height: 120,
+                      margin: const EdgeInsets.all(2),
+                      color: const Color.fromARGB(255, 147, 201, 168),
+                    );
+                  },
                 ),
-                itemCount: 12,
-                itemBuilder: (context, index) {
-                  return Container(
-                    // height: 120,
-                    margin: const EdgeInsets.all(2),
-                    color: const Color.fromARGB(255, 147, 201, 168),
-                  );
-                },
               ),
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+              MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                  ),
+                  itemCount: 12,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      // height: 120,
+                      margin: const EdgeInsets.all(2),
+                      color: const Color.fromARGB(255, 226, 156, 226),
+                    );
+                  },
                 ),
-                itemCount: 12,
-                itemBuilder: (context, index) {
-                  return Container(
-                    // height: 120,
-                    margin: const EdgeInsets.all(2),
-                    color: const Color.fromARGB(255, 226, 156, 226),
-                  );
-                },
               ),
             ],
           ),
