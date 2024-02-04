@@ -18,3 +18,10 @@ final class SubtractCounterPressed extends BookDistributedEvent {
 
   SubtractCounterPressed({required this.bookModelList, required this.index});
 }
+
+final class UpdateQuantity extends BookDistributedEvent {
+  final int index;
+  final int newQuantity;
+
+  UpdateQuantity({required this.index, required this.newQuantity});
+}

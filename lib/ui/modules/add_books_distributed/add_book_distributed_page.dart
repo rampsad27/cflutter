@@ -66,7 +66,7 @@ class _AddDistributedBooksPageState extends State<AddDistributedBooksPage> {
                         itemCount: state.bookModelList.length,
                         itemBuilder: (context, index) {
                           return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(
                                 state.bookModelList[index].code,

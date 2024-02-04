@@ -59,7 +59,21 @@ class BookDistributedBloc
         log(e.toString());
       }
     });
+    on<UpdateQuantity>((event, emit) {
+      var currentState = state;
+      if (currentState is BookDistributedSuccess) {
+        var updatedList = List<BookModel>.from(currentState.bookModelList);
+        updatedList[event.index] =
+            updatedList[event.index].copyWith(quantity: event.newQuantity);
+
+        emit(BookDistributedSuccess(
+          bookModelList: updatedList,
+          total: calculateTotal(updatedList),
+        ));
+      }
+    });
   }
+
   int calculateTotal(List<BookModel> listItem) {
     var total = 0;
     for (var element in listItem) {
