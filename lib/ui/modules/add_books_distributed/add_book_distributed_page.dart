@@ -68,7 +68,11 @@ class _AddDistributedBooksPageState extends State<AddDistributedBooksPage> {
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(state.bookModelList[index].code),
+                              Text(
+                                state.bookModelList[index].code,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500),
+                              ),
                               const SizedBox(width: 68.0),
                               Text(state.bookModelList[index].title),
                               const SizedBox(width: 34.0),
@@ -106,13 +110,30 @@ class _AddDistributedBooksPageState extends State<AddDistributedBooksPage> {
                         },
                       ),
                     ),
-                    Row(
+                    Column(
                       children: [
-                        const Text("Total"),
-                        const Spacer(),
-                        Text(state.total.toString()),
+                        Row(
+                          children: [
+                            const Text("Total Megabook Distributed"),
+                            const Spacer(),
+                            Text(state.total.toString()),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor:
+                                  state.total >= 1 ? Colors.pink : Colors.grey,
+                            ),
+                            child: const Text('Add'),
+                          ),
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               );
