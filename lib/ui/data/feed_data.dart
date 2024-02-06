@@ -1,4 +1,4 @@
-import 'package:ig/ui/modules/widgets/posts_feed.dart';
+import 'package:ig/ui/modules/components/model.dart';
 
 List<PostModel> feedData = [
   PostModel(

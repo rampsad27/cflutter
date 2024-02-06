@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ig/configs/app_theme.dart';
-import 'package:ig/ui/common_blocs/bloc/theme_bloc.dart';
-import 'package:ig/ui/modules/screen/feed.dart';
+import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
+import 'package:ig/ui/modules/theme/configs/app_theme.dart';
+
 import 'package:ig/ui/modules/screen/login.dart';
 // import 'package:ig/ui/modules/screen/login.dart';
 

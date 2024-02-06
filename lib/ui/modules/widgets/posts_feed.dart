@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ig/ui/modules/bloc/feed_bloc.dart';
+
+import 'package:ig/ui/modules/components/model.dart';
 import 'package:ig/ui/modules/widgets/bottomsheet.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:readmore/readmore.dart';
@@ -218,24 +218,4 @@ class _PostsFeedState extends State<PostsFeed> {
       ),
     );
   }
-}
-
-class PostModel {
-  final String postedby;
-  final String location;
-  // final String likes;
-  final String caption;
-  final String comments;
-  final String imageUrl;
-  final String imagecUrl;
-
-  PostModel({
-    required this.postedby,
-    required this.location,
-    // required this.likes,
-    required this.caption,
-    required this.comments,
-    required this.imageUrl,
-    required this.imagecUrl,
-  });
 }

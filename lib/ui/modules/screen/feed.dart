@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ig/configs/app_theme.dart';
-import 'package:ig/ui/common_blocs/bloc/theme_bloc.dart';
+
 import 'package:ig/ui/data/feed_data.dart';
+import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
+import 'package:ig/ui/modules/theme/configs/app_theme.dart';
+
 import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
 import 'package:ig/ui/modules/widgets/posts_feed.dart';
 

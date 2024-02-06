@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ig/configs/app_colors.dart';
-import 'package:ig/configs/text_theme.dart';
+import 'package:ig/ui/modules/theme/configs/app_colors.dart';
+import 'package:ig/ui/modules/theme/configs/text_theme.dart';
 
 class AppTheme {
   AppTheme._();
