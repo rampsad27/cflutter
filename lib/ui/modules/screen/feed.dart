@@ -8,7 +8,7 @@ import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
 import 'package:ig/ui/modules/widgets/posts_feed.dart';
 
 class FeedScreen extends StatefulWidget {
-  const FeedScreen({Key? key}) : super(key: key);
+  const FeedScreen({super.key});
 
   @override
   State<FeedScreen> createState() => _FeedScreenState();
@@ -30,9 +30,12 @@ class _FeedScreenState extends State<FeedScreen> {
             ),
             const SizedBox(width: 22),
             Container(
-              color: const Color.fromARGB(255, 110, 110, 110),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 188, 188, 188),
+                borderRadius: BorderRadius.circular(60),
+              ),
               height: 40,
-              width: 97,
+              width: 96,
               child: Row(
                 children: [
                   IconButton(

@@ -163,6 +163,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+  pull_to_refresh:
+    dependency: "direct main"
+    description:
+      name: pull_to_refresh
+      sha256: bbadd5a931837b57739cf08736bea63167e284e71fb23b218c8c9a6e042aad12
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  pull_to_refresh_flutter3:
+    dependency: "direct main"
+    description:
+      name: pull_to_refresh_flutter3
+      sha256: "37a88d901cca9a46dbdd46523de8e7b35a3e58634a0e775b1a5904981f69b353"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   readmore:
     dependency: "direct main"
     description:
@@ -242,4 +258,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.0-194.0.dev <4.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=2.0.0"

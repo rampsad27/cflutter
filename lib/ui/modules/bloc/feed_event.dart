@@ -1,12 +1,12 @@
-part of 'feed_bloc.dart';
+// part of 'feed_bloc.dart';
 
-abstract class FeedEvent extends Equatable {}
+// abstract class FeedEvent extends Equatable {}
 
-class LikesAdded extends FeedEvent {
-  final int likes;
-  LikesAdded({
-    required this.likes,
-  });
-  @override
-  List<Object?> get props => [];
-}
+// class FeedLikeCountIncrementRequested extends FeedEvent {
+//   final int likesCount;
+//   FeedLikeCountIncrementRequested({
+//     required this.likesCount,
+//   });
+//   @override
+//   List<Object?> get props => [];
+// }
