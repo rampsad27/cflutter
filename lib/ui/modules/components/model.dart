@@ -17,3 +17,9 @@ class PostModel {
     required this.imagecUrl,
   });
 }
+
+class UserNameModel {
+  final String email;
+
+  UserNameModel({required this.email});
+}

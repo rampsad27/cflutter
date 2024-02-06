@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/ui/data/profilenum_data.dart';
 import 'package:ig/ui/modules/components/buildcircularavatar.dart';
 import 'package:ig/ui/modules/components/buildprofilebutton.dart';
 import 'package:ig/ui/modules/components/buildprofileiconbutton.dart';
+import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
 import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
 
 class MyProfile extends StatefulWidget {
@@ -41,9 +43,9 @@ class _MyProfileState extends State<MyProfile> {
                 pinned: false,
                 floating: true,
                 snap: true,
-                title: const Text(
-                  'madhu.ram',
-                  style: TextStyle(
+                title: Text(
+                  context.read<AuthenticationRepository>().getUserInfo().email,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),

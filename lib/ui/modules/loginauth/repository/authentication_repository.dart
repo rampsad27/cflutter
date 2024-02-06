@@ -1,3 +1,4 @@
+import 'package:ig/ui/modules/components/model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationRepository {
@@ -19,8 +20,8 @@ class AuthenticationRepository {
     return true;
   }
 
-  getUserInfo() {
-    preferences?.getString(_email);
-    return _email;
+  UserNameModel getUserInfo() {
+    var email = preferences?.getString(_email);
+    return UserNameModel(email: email ?? "");
   }
 }
