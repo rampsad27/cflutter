@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
@@ -14,6 +16,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       await Future.delayed(const Duration(seconds: 2));
       await authenticationRepository.saveUserInfo(event.email, event.password);
       emit(const LoginSuccess(message: "bhayo"));
+    });
+    on<CheckLoggedInUser>((event, emit) async {
+      bool isLoggedIn = await authenticationRepository.isUserLoggedIn();
+      if (isLoggedIn) {
+        emit(const LoginSuccess(message: 'user verified'));
+        log(" verifies");
+      } else {
+        log("not verifies");
+      }
     });
   }
 }

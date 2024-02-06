@@ -13,3 +13,8 @@ final class LoginRequested extends LoginEvent {
 
   const LoginRequested({required this.email, required this.password});
 }
+
+class CheckLoggedInUser extends LoginEvent {
+  @override
+  List<Object> get props => [];
+}

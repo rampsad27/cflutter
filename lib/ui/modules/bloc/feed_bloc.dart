@@ -9,7 +9,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     on<FeedLikeCountIncrementRequested>((event, emit) {
       var newLike = event.likesCount + 1;
       emit(FeedLoadSuccess(likesCount: newLike));
-      emit(FeedLikeCountUpdated(likesCount: newLike));
+      // emit(FeedLikeCountUpdated(likesCount: newLike));
     });
   }
   int likesCount = 123;

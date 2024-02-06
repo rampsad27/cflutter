@@ -24,4 +24,14 @@ class AuthenticationRepository {
     var email = preferences?.getString(_email);
     return UserNameModel(email: email ?? "");
   }
+
+  Future<bool> isUserLoggedIn() async {
+    var email = preferences?.getString(_email);
+    var password = preferences?.getString(_password);
+
+    return email != null &&
+        email.isNotEmpty &&
+        password != null &&
+        password.isNotEmpty;
+  }
 }

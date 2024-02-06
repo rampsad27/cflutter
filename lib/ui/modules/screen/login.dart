@@ -20,9 +20,18 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isPasswordVisible = false;
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<LoginBloc>().add(CheckLoggedInUser());
+    });
+  }
+
+  @override
   void dispose() {
     super.dispose();
     _econtroller.dispose();
+    _pcontroller.dispose();
   }
 
   _showForgotPasswordDialog() {
