@@ -21,4 +21,6 @@ final class LoginSuccess extends LoginState {
   const LoginSuccess({required this.message});
 }
 
-// final class Authenticated extends LoginState {}
+final class Authenticated extends LoginState {}
+
+final class UnAuthenticated extends LoginState {}

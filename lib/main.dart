@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/ui/modules/bloc/feed_bloc.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
+import 'package:ig/ui/modules/screen/feed.dart';
 import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
 import 'package:ig/ui/modules/theme/configs/app_theme.dart';
 
@@ -31,22 +32,42 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => LoginBloc(
                 authenticationRepository:
-                    context.read<AuthenticationRepository>()),
+                    context.read<AuthenticationRepository>())
+              ..add(CheckLoggedInUser()),
           ),
-          // BlocProvider(
-          //     create: (context) => FeedBloc()
-          //       ..add(FeedLikeCountIncrementRequested(likesCount: 4)))
         ],
-        child: BlocBuilder<ThemeBloc, ThemeState>(
-          builder: (context, state) {
-            return MaterialApp(
-              theme:
-                  state is ThemeChanged ? state.themeData : AppTheme.lightTheme,
-              home:
-                  // const FeedScreen(),
-                  const LoginPage(),
-            );
+        child: BlocListener<LoginBloc, LoginState>(
+          listenWhen: (previous, current) => current is UnAuthenticated,
+          listener: (context, state) {
+            if (state is UnAuthenticated) {
+              // Navigator.pushAndRemoveUntil(context,
+              //     MaterialPageRoute(builder: (context) => const LoginPage()))
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                  (route) => false);
+            }
           },
+          child: BlocBuilder<LoginBloc, LoginState>(
+            buildWhen: (previous, current) =>
+                current is Authenticated ||
+                current is UnAuthenticated ||
+                current is LoginInitial,
+            builder: (context, state) {
+              return BlocBuilder<ThemeBloc, ThemeState>(
+                builder: (context, state) {
+                  return MaterialApp(
+                    theme: state is ThemeChanged
+                        ? state.themeData
+                        : AppTheme.lightTheme,
+                    home:
+                        // const FeedScreen(),
+                        const LoginPage(),
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

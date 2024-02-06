@@ -4,6 +4,7 @@ import 'package:ig/ui/data/profilenum_data.dart';
 import 'package:ig/ui/modules/components/buildcircularavatar.dart';
 import 'package:ig/ui/modules/components/buildprofilebutton.dart';
 import 'package:ig/ui/modules/components/buildprofileiconbutton.dart';
+import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
 import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
 
@@ -94,7 +95,14 @@ class _MyProfileState extends State<MyProfile> {
                         children: [
                           buildProfileButton("Edit profile"),
                           const SizedBox(width: 2),
-                          buildProfileButton("Share profile"),
+                          InkWell(
+                            onTap: () {
+                              context
+                                  .read<LoginBloc>()
+                                  .add(LogInLogOutRequested());
+                            },
+                            child: buildProfileButton("Share profile"),
+                          ),
                           const SizedBox(width: 2),
                           buildProfileIconButton(Icons.person_add_alt_sharp),
                         ],

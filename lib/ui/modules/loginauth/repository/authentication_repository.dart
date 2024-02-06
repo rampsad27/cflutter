@@ -34,4 +34,8 @@ class AuthenticationRepository {
         password != null &&
         password.isNotEmpty;
   }
+
+  Future<bool?> logout() async {
+    return await preferences?.clear();
+  }
 }
