@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ig/ui/modules/bloc/feed_bloc.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
 import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
                 authenticationRepository:
                     context.read<AuthenticationRepository>()),
           ),
+          // BlocProvider(
+          //     create: (context) => FeedBloc()
+          //       ..add(FeedLikeCountIncrementRequested(likesCount: 4)))
         ],
         child: BlocBuilder<ThemeBloc, ThemeState>(
           builder: (context, state) {

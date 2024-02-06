@@ -5,17 +5,6 @@ import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dar
 part 'login_event.dart';
 part 'login_state.dart';
 
-// class LoginBloc extends Bloc<LoginEvent, LoginState> {
-//   AuthenticationRepository authenticationRepository;
-//   LoginBloc(this.authenticationRepository) : super(LoginInitial()) {
-//     on<LoginRequested>((event, emit) async {
-//       emit(LoginLoadInProgress());
-//       await Future.delayed(const Duration(seconds: 2));
-//       await authenticationRepository.saveUserInfo(event.email, event.password);
-//       emit(const LoginSuccess(message: "bhayo"));
-//     });
-//   }
-// }
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthenticationRepository authenticationRepository;
 

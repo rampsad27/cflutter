@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ig/ui/modules/bloc/feed_bloc.dart';
 
 import 'package:ig/ui/modules/components/model.dart';
 import 'package:ig/ui/modules/widgets/bottomsheet.dart';
@@ -58,160 +60,167 @@ class _PostsFeedState extends State<PostsFeed> {
             itemCount: widget.postModelList.length,
             itemBuilder: (context, index) {
               return Container(
-                height: 610,
-                margin: const EdgeInsets.only(bottom: 20),
-                // color: const Color.fromARGB(255, 131, 170, 224),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 18,
-                            backgroundImage: NetworkImage(
-                                widget.postModelList[index].imagecUrl),
-                          ),
-                          const SizedBox(width: 8),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                  height: 610,
+                  margin: const EdgeInsets.only(bottom: 20),
+                  // color: const Color.fromARGB(255, 131, 170, 224),
+
+                  child: BlocProvider(
+                    create: (context) => FeedBloc(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          child: Row(
                             children: [
-                              Text(
-                                widget.postModelList[index].postedby,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              CircleAvatar(
+                                radius: 18,
+                                backgroundImage: NetworkImage(
+                                    widget.postModelList[index].imagecUrl),
                               ),
-                              Text(
-                                widget.postModelList[index].location,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          InkWell(
-                            onTap: () {
-                              showModalBottomSheet(
-                                context: context,
-                                isScrollControlled: true,
-                                builder: (context) {
-                                  return const MyBottomSheet();
-                                },
-                              );
-                            },
-                            child: const Icon(Icons.more_horiz_outlined),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    AspectRatio(
-                      aspectRatio: 1.0,
-                      child: Image.network(
-                        widget.postModelList[index].imageUrl,
-                        width: double.infinity,
-                        // height: 300,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    // const SizedBox(height: 10),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: const Icon(CupertinoIcons.heart),
-                                onPressed: () {
-                                  //           BlocProvider.of<FeedBloc>(context)
-                                  //   .add(FeedLikeCountIncrementRequested(
-                                  // likesCount:
-                                  //      state.likesCount,
-                                  // ));
-                                  // context.read<FeedBloc>().add(
-                                  //       FeedLikeCountIncrementRequested(
-                                  //           likesCount: 127),
-                                  //     );
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.comment_outlined),
-                                onPressed: () {},
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.send),
-                                onPressed: () {},
+                              const SizedBox(width: 8),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.postModelList[index].postedby,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.postModelList[index].location,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
                               ),
                               const Spacer(),
-                              IconButton(
-                                icon:
-                                    const Icon(Icons.bookmark_border_outlined),
-                                onPressed: () {},
+                              InkWell(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) {
+                                      return const MyBottomSheet();
+                                    },
+                                  );
+                                },
+                                child: const Icon(Icons.more_horiz_outlined),
                               ),
                             ],
                           ),
-                          // BlocBuilder<FeedBloc, FeedState>(
-                          //   builder: (context, state) {
-                          //     // return Text("${state.likesCount} likes");
-                          //     // return const Text(
-                          //     //   "h",
-                          //     //   style: TextStyle(
-                          //     //     fontSize: 11,
-                          //     //     fontWeight: FontWeight.bold,
-                          //     //   ),
-                          //     // );
-                          //   },
-                          // ),
-                          Row(
+                        ),
+                        const SizedBox(height: 8),
+                        AspectRatio(
+                          aspectRatio: 1.0,
+                          child: Image.network(
+                            widget.postModelList[index].imageUrl,
+                            width: double.infinity,
+                            // height: 300,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        // const SizedBox(height: 10),
+                        const Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.postModelList[index].postedby,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              Row(
+                                children: [
+                                  BlocBuilder<FeedBloc, FeedState>(
+                                    builder: (context, state) {
+                                      return IconButton(
+                                        icon: const Icon(CupertinoIcons.heart),
+                                        onPressed: () {
+                                          BlocProvider.of<FeedBloc>(context).add(
+                                              FeedLikeCountIncrementRequested(
+                                            likesCount: state is FeedLoadSuccess
+                                                ? state.likesCount
+                                                : 0,
+                                          ));
+                                        },
+                                      );
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.comment_outlined),
+                                    onPressed: () {},
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.send),
+                                    onPressed: () {},
+                                  ),
+                                  const Spacer(),
+                                  IconButton(
+                                    icon: const Icon(
+                                        Icons.bookmark_border_outlined),
+                                    onPressed: () {},
+                                  ),
+                                ],
                               ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: ReadMoreText(
-                                  widget.postModelList[index].caption,
-                                  trimLines: 2,
-                                  trimMode: TrimMode.Line,
-                                  trimCollapsedText: ' more',
-                                  trimExpandedText: ' less',
-                                  moreStyle: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
+                              BlocBuilder<FeedBloc, FeedState>(
+                                buildWhen: (previous, current) =>
+                                    current is FeedFailure,
+                                builder: (context, state) {
+                                  if (state is FeedLoadSuccess) {
+                                    return Text("${state.likesCount} likes");
+                                  } else {
+                                    return const Text("h likes");
+                                    // style: TextStyle(
+                                    //   fontSize: 11,
+                                    //   fontWeight: FontWeight.bold,
+                                    // ),
+                                  }
+                                },
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.postModelList[index].postedby,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                  lessStyle: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: ReadMoreText(
+                                      widget.postModelList[index].caption,
+                                      trimLines: 2,
+                                      trimMode: TrimMode.Line,
+                                      trimCollapsedText: ' more',
+                                      trimExpandedText: ' less',
+                                      moreStyle: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      lessStyle: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
+                                ],
+                              ),
+                              Text(
+                                " View all ${widget.postModelList[index].comments} comments",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Color.fromARGB(255, 156, 156, 156),
                                 ),
                               ),
                             ],
                           ),
-                          Text(
-                            " View all ${widget.postModelList[index].comments} comments",
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 156, 156, 156),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              );
+                  ));
             },
           ),
         ],
