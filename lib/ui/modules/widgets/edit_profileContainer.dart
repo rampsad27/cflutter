@@ -4,8 +4,13 @@ import 'package:ig/ui/modules/screen/editProfileScreens/nameScreen.dart';
 class MyEditProfileWidget extends StatelessWidget {
   final String one;
   final String two;
+  final Widget destinationPage;
 
-  const MyEditProfileWidget({Key? key, required this.one, required this.two})
+  const MyEditProfileWidget(
+      {Key? key,
+      required this.destinationPage,
+      required this.one,
+      required this.two})
       : super(key: key);
 
   @override
@@ -13,7 +18,7 @@ class MyEditProfileWidget extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Name()));
+            context, MaterialPageRoute(builder: (context) => destinationPage));
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

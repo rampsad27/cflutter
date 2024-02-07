@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ig/ui/modules/screen/editProfileScreens/bioScreen.dart';
 import 'package:ig/ui/modules/screen/editProfileScreens/nameScreen.dart';
+import 'package:ig/ui/modules/screen/editProfileScreens/usernameScreen.dart';
 import 'package:ig/ui/modules/widgets/edit_profileContainer.dart';
 
 class EditProfile extends StatefulWidget {
@@ -56,9 +58,21 @@ class _EditProfileState extends State<EditProfile> {
                 )
               ],
             ),
-            MyEditProfileWidget(one: "Name", two: "Add Name"),
-            MyEditProfileWidget(one: "Username", two: "add"),
-            MyEditProfileWidget(one: "Bio", two: "Add bio"),
+            MyEditProfileWidget(
+              one: "Name",
+              two: "Add Name",
+              destinationPage: Name(),
+            ),
+            MyEditProfileWidget(
+              one: "Username",
+              two: "add",
+              destinationPage: UserName(),
+            ),
+            MyEditProfileWidget(
+              one: "Bio",
+              two: "Add bio",
+              destinationPage: Bio(),
+            ),
           ],
         ),
       ),
