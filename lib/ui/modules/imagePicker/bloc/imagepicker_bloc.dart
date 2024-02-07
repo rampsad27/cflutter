@@ -25,11 +25,9 @@ class ImageAndFilePickerBloc
           emit(ImageAndFilePickerFilePicked(pickedFile: file));
         } else {
           // User canceled the picker
-          emit(
-            ImageAndFilePickerFailure(
-                errorMessage:
-                    "Process Cancelled by user or Didnot picked any file"),
-          );
+          emit(ImageAndFilePickerFailure(
+              errorMessage:
+                  "Process Cancelled by user or Did not pick any file"));
         }
       } catch (e) {
         log(e.toString());

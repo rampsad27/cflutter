@@ -4,6 +4,7 @@ import 'package:ig/ui/data/profilenum_data.dart';
 import 'package:ig/ui/modules/components/buildcircularavatar.dart';
 import 'package:ig/ui/modules/components/buildprofilebutton.dart';
 import 'package:ig/ui/modules/components/buildprofileiconbutton.dart';
+import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
@@ -68,28 +69,47 @@ class _MyProfileState extends State<MyProfile> {
                   padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                   child: Column(
                     children: [
-                      const Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          CircleAvatar(
-                            radius: 40,
-                            backgroundImage: NetworkImage(
-                              "https://img.etimg.com/thumb/width-640,height-480,imgsize-59990,resizemode-75,msid-95129274/news/international/us/national-black-cat-day-see-why-us-celebrates-this-occasion.jpg",
-                            ),
-                          ),
-                          SizedBox(width: 60),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                      BlocBuilder<ImageAndFilePickerBloc,
+                          ImageAndFilePickerState>(
+                        builder: (context, state) {
+                          return Row(
+                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ProfileNum(value: "23", title: "Posts"),
-                              SizedBox(width: 20),
-                              ProfileNum(value: "89", title: "Followers"),
-                              SizedBox(width: 20),
-                              ProfileNum(value: "76", title: "Following"),
+                              // CircleAvatar(
+                              //   radius: 40,
+                              //   backgroundImage: NetworkImage(
+                              //     "https://img.etimg.com/thumb/width-640,height-480,imgsize-59990,resizemode-75,msid-95129274/news/international/us/national-black-cat-day-see-why-us-celebrates-this-occasion.jpg",
+                              //   ),
+                              // ),
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundImage: state
+                                        is ImageAndFilePickerFilePicked
+                                    // ignore: unnecessary_cast
+                                    ? FileImage(state.pickedFile!)
+                                        as ImageProvider<Object>
+                                    // ignore: unnecessary_cast
+                                    : const NetworkImage(
+                                            "https://imgupscaler.com/images/samples/animal-after.webp")
+                                        as ImageProvider<Object>,
+                                //  as ImageProvider<Object>,
+                              ),
+                              const SizedBox(width: 60),
+                              const Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  ProfileNum(value: "23", title: "Posts"),
+                                  SizedBox(width: 20),
+                                  ProfileNum(value: "89", title: "Followers"),
+                                  SizedBox(width: 20),
+                                  ProfileNum(value: "76", title: "Following"),
+                                ],
+                              ),
                             ],
-                          ),
-                        ],
+                          );
+                        },
                       ),
                       const SizedBox(height: 10),
                       Row(
