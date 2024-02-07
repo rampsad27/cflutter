@@ -41,48 +41,40 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(create: (context) => ImageAndFilePickerBloc())
         ],
-        child: BlocListener<LoginBloc, LoginState>(
-          listenWhen: (previous, current) => current is UnAuthenticated,
-          listener: (context, state) {
-            if (state is UnAuthenticated) {
-              // Navigator.pushAndRemoveUntil(context,
-              //     MaterialPageRoute(builder: (context) => const LoginPage()))
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                  (route) => false);
-            }
+        child: BlocBuilder<ThemeBloc, ThemeState>(
+          builder: (context, themeState) {
+            return MaterialApp(
+              theme: themeState is ThemeChanged
+                  ? themeState.themeData
+                  : AppTheme.lightTheme,
+              home: BlocListener<LoginBloc, LoginState>(
+                listenWhen: (previous, current) => current is UnAuthenticated,
+                listener: (context, state) {
+                  if (state is UnAuthenticated) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
+                      (route) => false,
+                    );
+                  }
+                },
+                child: BlocBuilder<LoginBloc, LoginState>(
+                  buildWhen: (previous, current) =>
+                      current is Authenticated ||
+                      current is UnAuthenticated ||
+                      current is LoginInitial,
+                  builder: (context, loginState) {
+                    if (loginState is Authenticated) {
+                      return const FeedScreen();
+                    } else {
+                      return const LoginPage();
+                    }
+                  },
+                ),
+              ),
+            );
           },
-          child: BlocBuilder<LoginBloc, LoginState>(
-            buildWhen: (previous, current) =>
-                current is Authenticated ||
-                current is UnAuthenticated ||
-                current is LoginInitial,
-            builder: (context, state) {
-              if (state is Authenticated) {
-                return const FeedScreen();
-              } else if (state is UnAuthenticated) {
-                return const LoginPage();
-              } else {
-                return const LoginPage();
-              }
-
-              // return BlocBuilder<ThemeBloc, ThemeState>(
-              //   builder: (context, state) {
-              //     return MaterialApp(
-              //       theme: state is ThemeChanged
-              //           ? state.themeData
-              //           : AppTheme.lightTheme,
-              //       home:
-              //           // const MyProfile(),
-              //           // const FeedScreen(),
-              //           // const EditProfile(),
-              //           const LoginPage(),
-              //     );
-              //   },
-              // );
-            },
-          ),
         ),
       ),
     );

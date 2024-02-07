@@ -21,19 +21,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(LoginLoadInProgress());
       await Future.delayed(const Duration(seconds: 2));
       // bool isLoggedIn = await authenticationRepository.isUserLoggedIn();
-      final userInfo = AuthenticationRepository.getUserInfo();
-      if (userInfo.username.isNotEmpty) {
+      final userInfo = authenticationRepository.getUserInfo();
+      if (userInfo.email.isNotEmpty) {
         emit(Authenticated());
       } else {
         emit(UnAuthenticated());
       }
     });
     on<LogInLogOutRequested>((event, emit) async {
-      emit(LogInLogOutRequested());
+      emit(LoginLoadInProgress());
       await Future.delayed(const Duration(seconds: 2));
 
-      final userInfo = await AuthenticationRepository.logout();
-      if (userInfo != null && userInfo == true) {
+      final result = await authenticationRepository.logout();
+      if (result != null && result == true) {
         emit(UnAuthenticated());
       } else {
         emit(Authenticated());
