@@ -19,6 +19,20 @@ class _NameState extends State<Name> {
           icon: const Icon(Icons.arrow_back_sharp),
         ),
         title: const Text("Name"),
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Done",
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -27,13 +41,18 @@ class _NameState extends State<Name> {
             TextFormField(
               decoration: const InputDecoration(
                 enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 162, 162, 162))),
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 162, 162, 162),
+                  ),
+                ),
                 focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 164, 164, 164))),
-                labelText: "name",
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 164, 164, 164),
+                  ),
+                ),
+                labelText: "Name",
                 floatingLabelBehavior: FloatingLabelBehavior.always,
+                suffixIcon: Icon(Icons.close),
               ),
             ),
           ],

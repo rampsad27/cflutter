@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ig/ui/modules/bloc/feed_bloc.dart';
+
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
-import 'package:ig/ui/modules/screen/feed.dart';
+import 'package:ig/ui/modules/screen/myprofile.dart';
+
 import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
 import 'package:ig/ui/modules/theme/configs/app_theme.dart';
 
@@ -62,9 +63,10 @@ class MyApp extends StatelessWidget {
                         ? state.themeData
                         : AppTheme.lightTheme,
                     home:
+                        // const MyProfile(),
                         // const FeedScreen(),
-                        const EditProfile(),
-                    // const LoginPage(),
+                        // const EditProfile(),
+                        const LoginPage(),
                   );
                 },
               );

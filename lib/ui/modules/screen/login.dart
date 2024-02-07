@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
-import 'dart:developer';
+
 import 'package:ig/ui/modules/screen/feed.dart';
 
 // import 'package:ig/ui/modules/widgets/line.dart';

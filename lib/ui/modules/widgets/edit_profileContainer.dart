@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ig/ui/modules/screen/editProfileScreens/nameScreen.dart';
 
 class MyEditProfileWidget extends StatelessWidget {
   final String one;
@@ -20,13 +19,31 @@ class MyEditProfileWidget extends StatelessWidget {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => destinationPage));
       },
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(one),
-          const SizedBox(width: 10),
-          Text(two),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                one,
+                style: const TextStyle(
+                    fontSize: 18, fontWeight: FontWeight.normal),
+              ),
+              const SizedBox(width: 20),
+              Text(
+                two,
+                style: const TextStyle(
+                    color: Color.fromARGB(96, 102, 102, 102), fontSize: 18),
+              ),
+            ],
+          ),
+          const Divider(
+            thickness: 0,
+            indent: 70,
+          ),
         ],
       ),
     );

@@ -25,7 +25,7 @@ class _EditProfileState extends State<EditProfile> {
         title: const Text("Edit profile"),
       ),
       body: const Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +58,7 @@ class _EditProfileState extends State<EditProfile> {
                 )
               ],
             ),
+            SizedBox(height: 16),
             MyEditProfileWidget(
               one: "Name",
               two: "Add Name",
@@ -69,8 +70,18 @@ class _EditProfileState extends State<EditProfile> {
               destinationPage: UserName(),
             ),
             MyEditProfileWidget(
+              one: "Pronouns",
+              two: "Add pronouns",
+              destinationPage: Bio(),
+            ),
+            MyEditProfileWidget(
               one: "Bio",
               two: "Add bio",
+              destinationPage: Bio(),
+            ),
+            MyEditProfileWidget(
+              one: "Links",
+              two: "Add Links",
               destinationPage: Bio(),
             ),
           ],

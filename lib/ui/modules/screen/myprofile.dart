@@ -6,6 +6,7 @@ import 'package:ig/ui/modules/components/buildprofilebutton.dart';
 import 'package:ig/ui/modules/components/buildprofileiconbutton.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
+import 'package:ig/ui/modules/screen/edit_profile.dart';
 import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
 
 class MyProfile extends StatefulWidget {
@@ -45,7 +46,11 @@ class _MyProfileState extends State<MyProfile> {
                 floating: true,
                 snap: true,
                 title: Text(
-                  context.read<AuthenticationRepository>().getUserInfo().email,
+                  context
+                          .read<AuthenticationRepository>()
+                          .getUserInfo()
+                          .email ??
+                      "noname",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
@@ -93,7 +98,16 @@ class _MyProfileState extends State<MyProfile> {
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          buildProfileButton("Edit profile"),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const EditProfile()),
+                              );
+                            },
+                            child: buildProfileButton("Edit profile"),
+                          ),
                           const SizedBox(width: 2),
                           InkWell(
                             onTap: () {
