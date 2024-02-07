@@ -46,11 +46,7 @@ class _MyProfileState extends State<MyProfile> {
                 floating: true,
                 snap: true,
                 title: Text(
-                  context
-                          .read<AuthenticationRepository>()
-                          .getUserInfo()
-                          .email ??
-                      "noname",
+                  context.read<AuthenticationRepository>().getUserInfo().email,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,

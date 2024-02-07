@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
+import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
 import 'package:ig/ui/modules/screen/editProfileScreens/bioScreen.dart';
 import 'package:ig/ui/modules/screen/editProfileScreens/nameScreen.dart';
 import 'package:ig/ui/modules/screen/editProfileScreens/usernameScreen.dart';
@@ -24,15 +27,15 @@ class _EditProfileState extends State<EditProfile> {
         ),
         title: const Text("Edit profile"),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(12.0),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircleAvatar(
@@ -48,38 +51,61 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
-                Text(
-                  "Edit profile or avatar",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 18,
-                  ),
+                const SizedBox(height: 10),
+                TextButton(
+                  onPressed: () {
+                    context
+                        .read<ImageAndFilePickerBloc>()
+                        .add(ImageAndFilePickUpRequested());
+                  },
+                  child: const Text("Edit profile or avatar",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 18,
+                      )),
+                ),
+                BlocBuilder<ImageAndFilePickerBloc, ImageAndFilePickerState>(
+                  builder: (context, state) {
+                    if (state is ImageAndFilePickerFilePicked) {
+                      return Image.file(state.pickedFile!);
+                    } else if (state is ImageAndFilePickerLoadInProgress) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (state is ImageAndFilePickerFailure) {
+                      return Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Text(state.errorMessage),
+                      );
+                    } else {
+                      return const SizedBox.shrink();
+                    }
+                  },
                 )
               ],
             ),
-            SizedBox(height: 16),
-            MyEditProfileWidget(
+            const SizedBox(height: 16),
+            const MyEditProfileWidget(
               one: "Name",
               two: "Add Name",
               destinationPage: Name(),
             ),
-            MyEditProfileWidget(
+            const MyEditProfileWidget(
               one: "Username",
               two: "add",
               destinationPage: UserName(),
             ),
-            MyEditProfileWidget(
+            const MyEditProfileWidget(
               one: "Pronouns",
               two: "Add pronouns",
               destinationPage: Bio(),
             ),
-            MyEditProfileWidget(
+            const MyEditProfileWidget(
               one: "Bio",
               two: "Add bio",
               destinationPage: Bio(),
             ),
-            MyEditProfileWidget(
+            const MyEditProfileWidget(
               one: "Links",
               two: "Add Links",
               destinationPage: Bio(),

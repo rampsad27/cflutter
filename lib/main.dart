@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
+import 'package:ig/ui/modules/screen/feed.dart';
 import 'package:ig/ui/modules/screen/myprofile.dart';
 
 import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
                     context.read<AuthenticationRepository>())
               ..add(CheckLoggedInUser()),
           ),
+          BlocProvider(create: (context) => ImageAndFilePickerBloc())
         ],
         child: BlocListener<LoginBloc, LoginState>(
           listenWhen: (previous, current) => current is UnAuthenticated,
@@ -56,6 +59,14 @@ class MyApp extends StatelessWidget {
                 current is UnAuthenticated ||
                 current is LoginInitial,
             builder: (context, state) {
+              // if (state is Authenticated) {
+              //   return const FeedScreen();
+              // } else if (state is UnAuthenticated) {
+              //   return const LoginPage();
+              // } else {
+              //   return const LoginPage();
+              // }
+
               return BlocBuilder<ThemeBloc, ThemeState>(
                 builder: (context, state) {
                   return MaterialApp(

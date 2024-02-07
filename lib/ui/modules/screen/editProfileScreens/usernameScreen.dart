@@ -18,7 +18,7 @@ class _UserNameState extends State<UserName> {
           },
           icon: const Icon(Icons.arrow_back_sharp),
         ),
-        title: const Text("Nasdfdfme"),
+        title: const Text("Username"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
