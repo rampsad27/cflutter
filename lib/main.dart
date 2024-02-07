@@ -59,28 +59,28 @@ class MyApp extends StatelessWidget {
                 current is UnAuthenticated ||
                 current is LoginInitial,
             builder: (context, state) {
-              // if (state is Authenticated) {
-              //   return const FeedScreen();
-              // } else if (state is UnAuthenticated) {
-              //   return const LoginPage();
-              // } else {
-              //   return const LoginPage();
-              // }
+              if (state is Authenticated) {
+                return const FeedScreen();
+              } else if (state is UnAuthenticated) {
+                return const LoginPage();
+              } else {
+                return const LoginPage();
+              }
 
-              return BlocBuilder<ThemeBloc, ThemeState>(
-                builder: (context, state) {
-                  return MaterialApp(
-                    theme: state is ThemeChanged
-                        ? state.themeData
-                        : AppTheme.lightTheme,
-                    home:
-                        // const MyProfile(),
-                        // const FeedScreen(),
-                        // const EditProfile(),
-                        const LoginPage(),
-                  );
-                },
-              );
+              // return BlocBuilder<ThemeBloc, ThemeState>(
+              //   builder: (context, state) {
+              //     return MaterialApp(
+              //       theme: state is ThemeChanged
+              //           ? state.themeData
+              //           : AppTheme.lightTheme,
+              //       home:
+              //           // const MyProfile(),
+              //           // const FeedScreen(),
+              //           // const EditProfile(),
+              //           const LoginPage(),
+              //     );
+              //   },
+              // );
             },
           ),
         ),

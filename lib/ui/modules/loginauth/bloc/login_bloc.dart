@@ -18,23 +18,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(const LoginSuccess(message: "bhayo"));
     });
     on<CheckLoggedInUser>((event, emit) async {
-      bool isLoggedIn = await authenticationRepository.isUserLoggedIn();
-      if (isLoggedIn) {
+      emit(LoginLoadInProgress());
+      await Future.delayed(const Duration(seconds: 2));
+      // bool isLoggedIn = await authenticationRepository.isUserLoggedIn();
+      final userInfo = AuthenticationRepository.getUserInfo();
+      if (userInfo.username.isNotEmpty) {
         emit(Authenticated());
-        log(" verifies");
       } else {
         emit(UnAuthenticated());
-        log("not verifies");
       }
     });
     on<LogInLogOutRequested>((event, emit) async {
-      final isLogedIn = await authenticationRepository.logout();
-      if (isLogedIn == true) {
+      emit(LogInLogOutRequested());
+      await Future.delayed(const Duration(seconds: 2));
+
+      final userInfo = await AuthenticationRepository.logout();
+      if (userInfo != null && userInfo == true) {
         emit(UnAuthenticated());
-        log(" verifies");
       } else {
         emit(Authenticated());
-        log("not verifies");
       }
     });
   }

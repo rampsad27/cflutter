@@ -75,12 +75,6 @@ class _MyProfileState extends State<MyProfile> {
                           return Row(
                             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              // CircleAvatar(
-                              //   radius: 40,
-                              //   backgroundImage: NetworkImage(
-                              //     "https://img.etimg.com/thumb/width-640,height-480,imgsize-59990,resizemode-75,msid-95129274/news/international/us/national-black-cat-day-see-why-us-celebrates-this-occasion.jpg",
-                              //   ),
-                              // ),
                               CircleAvatar(
                                 radius: 40,
                                 backgroundImage: state

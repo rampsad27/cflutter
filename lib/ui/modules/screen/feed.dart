@@ -19,67 +19,72 @@ class FeedScreen extends StatefulWidget {
 class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            const Text(
-              "Instagram",
-              style: TextStyle(
-                fontFamily: "S",
-                fontSize: 42,
-              ),
-            ),
-            const SizedBox(width: 22),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 188, 188, 188),
-                borderRadius: BorderRadius.circular(60),
-              ),
-              height: 40,
-              width: 96,
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      context.read<ThemeBloc>().add(
-                          ThemeChangeRequested(themeData: AppTheme.lightTheme));
-                    },
-                    icon: const Icon(
-                      Icons.sunny,
-                    ),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        return MaterialApp(
+          theme: state is ThemeChanged ? state.themeData : AppTheme.lightTheme,
+          appBar: AppBar(
+            title: Row(
+              children: [
+                const Text(
+                  "Instagram",
+                  style: TextStyle(
+                    fontFamily: "S",
+                    fontSize: 42,
                   ),
-                  IconButton(
-                    onPressed: () {
-                      context.read<ThemeBloc>().add(
-                          ThemeChangeRequested(themeData: AppTheme.darkTheme));
-                    },
-                    icon: const Icon(
-                      Icons.nightlight_round_outlined,
-                    ),
+                ),
+                const SizedBox(width: 22),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 188, 188, 188),
+                    borderRadius: BorderRadius.circular(60),
                   ),
-                ],
+                  height: 40,
+                  width: 96,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          context.read<ThemeBloc>().add(ThemeChangeRequested(
+                              themeData: AppTheme.lightTheme));
+                        },
+                        icon: const Icon(
+                          Icons.sunny,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          context.read<ThemeBloc>().add(ThemeChangeRequested(
+                              themeData: AppTheme.darkTheme));
+                        },
+                        icon: const Icon(
+                          Icons.nightlight_round_outlined,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            automaticallyImplyLeading: false,
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  CupertinoIcons.heart,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
               ),
-            ),
-          ],
-        ),
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              CupertinoIcons.heart,
-              color: Color.fromARGB(255, 0, 0, 0),
-            ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.messenger),
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.messenger),
-          ),
-        ],
-      ),
-      body: PostsFeed(postModelList: feedData),
-      bottomNavigationBar: const BottomNav(),
+          body: PostsFeed(postModelList: feedData),
+          bottomNavigationBar: const BottomNav(),
+        );
+      },
     );
   }
 }
