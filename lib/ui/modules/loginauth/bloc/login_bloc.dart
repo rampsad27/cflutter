@@ -28,14 +28,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
     });
     on<LogInLogOutRequested>((event, emit) async {
-      //   final isLogedIn = await authenticationRepository.logout();
-      //   if (isLoggedIn == true) {
-      //     emit(Authenticated());
-      //     log(" verifies");
-      //   } else {
-      //     emit(UnAuthenticated());
-      //     log("not verifies");
-      //   }
+      final isLogedIn = await authenticationRepository.logout();
+      if (isLogedIn == true) {
+        emit(UnAuthenticated());
+        log(" verifies");
+      } else {
+        emit(Authenticated());
+        log("not verifies");
+      }
     });
   }
 }
