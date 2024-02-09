@@ -23,3 +23,9 @@ class UserNameModel {
 
   UserNameModel({required this.email});
 }
+
+class UserProfileNameModel {
+  final String name;
+  final String username;
+  UserProfileNameModel({required this.name, required this.username});
+}

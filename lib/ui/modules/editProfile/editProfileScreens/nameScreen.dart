@@ -8,6 +8,30 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
+  final TextEditingController _controller = TextEditingController();
+  bool _isNotEmpty = false;
+
+  String _savedText = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      final isNotEmpty = _controller.text.isNotEmpty;
+      if (isNotEmpty != _isNotEmpty) {
+        setState(() {
+          _isNotEmpty = isNotEmpty;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,14 +45,22 @@ class _NameState extends State<Name> {
         title: const Text("Name"),
         actions: [
           InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
+            onTap: _isNotEmpty
+                ? () {
+                    setState(() {
+                      _savedText = _controller.text;
+                    });
+                    Navigator.pop(context);
+                  }
+                : null,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Done",
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  color: _isNotEmpty ? Colors.blue : Colors.grey,
+                ),
               ),
             ),
           ),
@@ -37,8 +69,10 @@ class _NameState extends State<Name> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
+              controller: _controller,
               decoration: const InputDecoration(
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -55,6 +89,7 @@ class _NameState extends State<Name> {
                 suffixIcon: Icon(Icons.close),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

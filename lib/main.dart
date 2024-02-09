@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ig/ui/modules/editProfile/bloc/edit_profile_bloc.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
+import 'package:ig/ui/modules/loginauth/repository/profile_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
 import 'package:ig/ui/modules/screen/feed.dart';
 import 'package:ig/ui/modules/screen/myprofile.dart';
@@ -23,8 +25,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthenticationRepository(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => AuthenticationRepository(),
+        ),
+        RepositoryProvider(
+          create: (context) => ProfileRepository(),
+        ),
+      ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -38,6 +47,11 @@ class MyApp extends StatelessWidget {
                 authenticationRepository:
                     context.read<AuthenticationRepository>())
               ..add(CheckLoggedInUser()),
+          ),
+          BlocProvider(
+            create: (context) => EditProfileBloc(
+                profileRepository: context.read<ProfileRepository>())
+              ..add(CheckEditProfileData()),
           ),
           BlocProvider(create: (context) => ImageAndFilePickerBloc())
         ],

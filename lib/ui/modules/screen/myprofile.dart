@@ -7,6 +7,7 @@ import 'package:ig/ui/modules/components/buildprofileiconbutton.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
+import 'package:ig/ui/modules/loginauth/repository/profile_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
 import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
 
@@ -105,6 +106,10 @@ class _MyProfileState extends State<MyProfile> {
                           );
                         },
                       ),
+                      Text(context
+                          .read<ProfileRepository>()
+                          .getUserProfileInfo()
+                          .name),
                       const SizedBox(height: 10),
                       Row(
                         children: [

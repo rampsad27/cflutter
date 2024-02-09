@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
-import 'package:ig/ui/modules/screen/editProfileScreens/bioScreen.dart';
-import 'package:ig/ui/modules/screen/editProfileScreens/nameScreen.dart';
-import 'package:ig/ui/modules/screen/editProfileScreens/usernameScreen.dart';
+import 'package:ig/ui/modules/editProfile/editProfileScreens/bioScreen.dart';
+import 'package:ig/ui/modules/editProfile/editProfileScreens/nameScreen.dart';
+import 'package:ig/ui/modules/editProfile/editProfileScreens/usernameScreen.dart';
 import 'package:ig/ui/modules/widgets/edit_profileContainer.dart';
 
 class EditProfile extends StatefulWidget {
