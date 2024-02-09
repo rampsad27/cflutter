@@ -18,7 +18,7 @@ class _BioState extends State<Bio> {
           },
           icon: const Icon(Icons.arrow_back_sharp),
         ),
-        title: const Text("Name"),
+        title: const Text("Bio"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -32,7 +32,7 @@ class _BioState extends State<Bio> {
                 focusedBorder: UnderlineInputBorder(
                     borderSide:
                         BorderSide(color: Color.fromARGB(255, 164, 164, 164))),
-                labelText: "name",
+                labelText: "bio",
                 floatingLabelBehavior: FloatingLabelBehavior.always,
               ),
             ),
