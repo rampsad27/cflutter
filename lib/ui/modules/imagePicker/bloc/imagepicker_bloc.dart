@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'imagepicker_event.dart';
 part 'imagepicker_state.dart';
@@ -32,6 +33,27 @@ class ImageAndFilePickerBloc
       } catch (e) {
         log(e.toString());
         emit(ImageAndFilePickerFailure(errorMessage: e.toString()));
+      }
+    });
+  }
+}
+
+class TakePictureBloc extends Bloc<TakePictureEvent, TakePictureState> {
+  final ImagePicker picker = ImagePicker();
+
+  TakePictureBloc() : super(TakePictureInitial()) {
+    on<TakePictureRequested>((event, emit) async {
+      emit(TakePictureLoadInProgress());
+      try {
+        final XFile? result =
+            await picker.pickImage(source: ImageSource.camera);
+        if (result != null) {
+          emit(TakePicturePicked(pickedImage: File(result.path)));
+        } else {
+          emit(TakePictureFailure(errorMessage: "User canceled the action"));
+        }
+      } catch (e) {
+        emit(TakePictureFailure(errorMessage: e.toString()));
       }
     });
   }

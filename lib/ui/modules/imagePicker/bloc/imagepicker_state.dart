@@ -27,3 +27,31 @@ final class ImageAndFilePickerFilePicked extends ImageAndFilePickerState {
   @override
   List<Object?> get props => [pickedFile];
 }
+
+@immutable
+sealed class TakePictureState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+final class TakePictureInitial extends TakePictureState {}
+
+final class TakePictureLoadInProgress extends TakePictureState {}
+
+final class TakePictureFailure extends TakePictureState {
+  final String errorMessage;
+
+  TakePictureFailure({required this.errorMessage});
+
+  @override
+  List<Object?> get props => [errorMessage];
+}
+
+final class TakePicturePicked extends TakePictureState {
+  final File? pickedImage;
+
+  TakePicturePicked({this.pickedImage});
+
+  @override
+  List<Object?> get props => [pickedImage];
+}

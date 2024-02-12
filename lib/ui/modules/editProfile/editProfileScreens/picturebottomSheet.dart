@@ -19,6 +19,7 @@ class _PicureBottomSheetState extends State<PicureBottomSheet> {
           bottom: const TabBar(
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(width: 1.5, color: Colors.black),
+              insets: EdgeInsets.symmetric(horizontal: 105),
             ),
             tabs: [
               Tab(icon: Icon(Icons.grid_on_sharp)),
@@ -30,34 +31,59 @@ class _PicureBottomSheetState extends State<PicureBottomSheet> {
           builder: (context, state) {
             return TabBarView(
               children: [
-                TextButton(
-                  onPressed: () {
-                    context
-                        .read<ImageAndFilePickerBloc>()
-                        .add(ImageAndFilePickUpRequested());
-                  },
-                  child: const Column(
-                    children: [
-                      Text(
-                        "Choose from library",
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
+                Column(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        context
+                            .read<ImageAndFilePickerBloc>()
+                            .add(ImageAndFilePickUpRequested());
+                      },
+                      child: const Column(
+                        children: [
+                          Text(
+                            "Choose from library",
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text("Take Photo"),
+                    ),
+                    if (state is ImageAndFilePickerLoadInProgress) ...[
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ] else if (state is ImageAndFilePickerFailure) ...[
+                      Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Text(state.errorMessage),
+                      ),
                     ],
-                  ),
+                    BlocBuilder<TakePictureBloc, TakePictureState>(
+                      builder: (context, state) {
+                        return TextButton(
+                          onPressed: () {
+                            context
+                                .read<TakePictureBloc>()
+                                .add(TakePictureRequested());
+                          },
+                          child: const Text("Take Photo"),
+                        );
+                      },
+                    ),
+                    if (state is TakePictureLoadInProgress) ...[
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ] else if (state is TakePictureFailure) ...[
+                      const Padding(
+                        padding: EdgeInsets.all(24.0),
+                        child: Text("naa"),
+                      ),
+                    ],
+                  ],
                 ),
-                if (state is ImageAndFilePickerLoadInProgress) ...[
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ] else if (state is ImageAndFilePickerFailure) ...[
-                  Padding(
-                    padding: const EdgeInsets.all(24.0),
-                    child: Text(state.errorMessage),
-                  ),
-                ],
                 const Text("Create Avatar"),
               ],
             );
