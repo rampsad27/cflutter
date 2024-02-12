@@ -4,7 +4,7 @@ List<PostModel> feedData = [
   PostModel(
     postedby: "bizzle.danting",
     location: "ktm",
-    // likes: "347",
+    likes: 234,
     comments: "62",
     caption:
         "Hello! Exercitation duis consequmpor culpa labore officia eiusmod elit cupidatat ut. ",
@@ -16,7 +16,7 @@ List<PostModel> feedData = [
   PostModel(
     postedby: "user1",
     location: "New York",
-    // likes: "512",
+    likes: 734,
     comments: "48",
     caption: "City vibes!",
     imageUrl:
@@ -27,7 +27,7 @@ List<PostModel> feedData = [
   PostModel(
     postedby: "beach_life",
     location: "Maldives",
-    // likes: "642",
+    likes: 2345,
     comments: "89",
     caption: "Sun, sand, and sea!",
     imageUrl:
@@ -39,7 +39,7 @@ List<PostModel> feedData = [
     postedby: "winter_wonder",
     location: "Switzerland",
     caption: "",
-    // likes: "421",
+    likes: 54,
     comments: "55",
     imageUrl:
         "https://plus.unsplash.com/premium_photo-1669748156838-33fda144e8dd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dHJvcGljYWx8ZW58MHx8MHx8fDA%3D",

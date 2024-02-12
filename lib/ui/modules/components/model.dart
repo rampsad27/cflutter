@@ -1,7 +1,7 @@
 class PostModel {
   final String postedby;
   final String location;
-  // final String likes;
+  final int likes;
   final String caption;
   final String comments;
   final String imageUrl;
@@ -10,7 +10,7 @@ class PostModel {
   PostModel({
     required this.postedby,
     required this.location,
-    // required this.likes,
+    required this.likes,
     required this.caption,
     required this.comments,
     required this.imageUrl,

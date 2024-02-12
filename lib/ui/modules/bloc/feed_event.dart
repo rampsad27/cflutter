@@ -1,6 +1,6 @@
 part of 'feed_bloc.dart';
 
-abstract class FeedEvent extends Equatable {}
+sealed class FeedEvent {}
 
 class FeedLikeCountIncrementRequested extends FeedEvent {
   final int likesCount;

@@ -45,6 +45,7 @@ dependencies:
   bloc: ^8.1.2
   file_picker: ^6.1.1
   image_picker: ^1.0.7
+  share_plus: ^7.2.2
 
 dev_dependencies:
   flutter_test:

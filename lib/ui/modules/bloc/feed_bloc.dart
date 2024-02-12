@@ -7,10 +7,9 @@ part 'feed_state.dart';
 class FeedBloc extends Bloc<FeedEvent, FeedState> {
   FeedBloc() : super(FeedInitial()) {
     on<FeedLikeCountIncrementRequested>((event, emit) {
-      var newLike = event.likesCount + 1;
-      emit(FeedLoadSuccess(likesCount: newLike));
-      // emit(FeedLikeCountUpdated(likesCount: newLike));
+      var newLikeCount = event.likesCount + 1;
+      emit(FeedLikeCountUpdated(likesCount: newLikeCount));
+      emit(FeedLoadSuccess(likesCount: newLikeCount));
     });
   }
-  int likesCount = 123;
 }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MyEditProfileWidget extends StatelessWidget {
-  final String one;
-  final String two;
+  final String title;
+  final String value;
   final Widget destinationPage;
 
   const MyEditProfileWidget(
       {Key? key,
       required this.destinationPage,
-      required this.one,
-      required this.two})
+      required this.title,
+      required this.value})
       : super(key: key);
 
   @override
@@ -28,13 +28,13 @@ class MyEditProfileWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                one,
+                title,
                 style: const TextStyle(
                     fontSize: 18, fontWeight: FontWeight.normal),
               ),
               const SizedBox(width: 20),
               Text(
-                two,
+                value,
                 style: const TextStyle(
                     color: Color.fromARGB(96, 102, 102, 102), fontSize: 18),
               ),

@@ -9,6 +9,7 @@ import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:readmore/readmore.dart';
 import 'package:ig/ui/modules/screen/story.dart';
 import 'package:ig/ui/modules/widgets/story_design.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PostsFeed extends StatefulWidget {
   const PostsFeed({super.key, required this.postModelList});
@@ -136,15 +137,17 @@ class _PostsFeedState extends State<PostsFeed> {
                                   BlocBuilder<FeedBloc, FeedState>(
                                     builder: (context, state) {
                                       return IconButton(
-                                        icon: const Icon(CupertinoIcons.heart),
                                         onPressed: () {
                                           BlocProvider.of<FeedBloc>(context).add(
                                               FeedLikeCountIncrementRequested(
                                             likesCount: state is FeedLoadSuccess
                                                 ? state.likesCount
-                                                : 0,
+                                                : widget
+                                                    .postModelList[index].likes,
                                           ));
                                         },
+                                        icon: const Icon(
+                                            Icons.favorite_border_outlined),
                                       );
                                     },
                                   ),
@@ -154,7 +157,9 @@ class _PostsFeedState extends State<PostsFeed> {
                                   ),
                                   IconButton(
                                     icon: const Icon(Icons.send),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Share.share("send in messenger");
+                                    },
                                   ),
                                   const Spacer(),
                                   IconButton(
@@ -165,13 +170,15 @@ class _PostsFeedState extends State<PostsFeed> {
                                 ],
                               ),
                               BlocBuilder<FeedBloc, FeedState>(
-                                buildWhen: (previous, current) =>
-                                    current is FeedFailure,
+                                // buildWhen: (previous, current) =>
+                                //     current is FeedFailure,
                                 builder: (context, state) {
                                   if (state is FeedLoadSuccess) {
                                     return Text("${state.likesCount} likes");
                                   } else {
-                                    return const Text("h likes");
+                                    return Text(
+                                        "${widget.postModelList[index].likes} likes");
+                                    // const Text("h likes");
                                     // style: TextStyle(
                                     //   fontSize: 11,
                                     //   fontWeight: FontWeight.bold,
