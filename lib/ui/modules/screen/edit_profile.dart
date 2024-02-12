@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/ui/modules/editProfile/bloc/edit_profile_bloc.dart';
+import 'package:ig/ui/modules/editProfile/editProfileScreens/picturebottomSheet.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 import 'package:ig/ui/modules/editProfile/editProfileScreens/bioScreen.dart';
 import 'package:ig/ui/modules/editProfile/editProfileScreens/nameScreen.dart';
@@ -55,9 +56,7 @@ class _EditProfileState extends State<EditProfile> {
                                       as ImageProvider<Object>,
                               //  as ImageProvider<Object>,
                             ),
-
-                            const SizedBox(
-                                width: 10), // Add some spacing between avatars
+                            const SizedBox(width: 10),
                             const CircleAvatar(
                               radius: 44,
                               backgroundImage: NetworkImage(
@@ -68,9 +67,11 @@ class _EditProfileState extends State<EditProfile> {
                         const SizedBox(height: 10),
                         TextButton(
                           onPressed: () {
-                            context
-                                .read<ImageAndFilePickerBloc>()
-                                .add(ImageAndFilePickUpRequested());
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  const PicureBottomSheet(),
+                            );
                           },
                           child: const Text("Edit profile or avatar",
                               style: TextStyle(
@@ -78,16 +79,16 @@ class _EditProfileState extends State<EditProfile> {
                                 fontSize: 18,
                               )),
                         ),
-                        if (state is ImageAndFilePickerLoadInProgress) ...[
-                          const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        ] else if (state is ImageAndFilePickerFailure) ...[
-                          Padding(
-                            padding: const EdgeInsets.all(24.0),
-                            child: Text(state.errorMessage),
-                          ),
-                        ],
+                        // if (state is ImageAndFilePickerLoadInProgress) ...[
+                        //   const Center(
+                        //     child: CircularProgressIndicator(),
+                        //   ),
+                        // ] else if (state is ImageAndFilePickerFailure) ...[
+                        //   Padding(
+                        //     padding: const EdgeInsets.all(24.0),
+                        //     child: Text(state.errorMessage),
+                        //   ),
+                        // ],
                       ],
                     );
                   },

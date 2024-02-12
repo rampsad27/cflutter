@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 
 class PicureBottomSheet extends StatefulWidget {
   const PicureBottomSheet({super.key});
@@ -24,11 +26,42 @@ class _PicureBottomSheetState extends State<PicureBottomSheet> {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-            Center(child: Text("Choose from library")),
-            Center(child: Text("Create Avatar")),
-          ],
+        body: BlocBuilder<ImageAndFilePickerBloc, ImageAndFilePickerState>(
+          builder: (context, state) {
+            return TabBarView(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    context
+                        .read<ImageAndFilePickerBloc>()
+                        .add(ImageAndFilePickUpRequested());
+                  },
+                  child: const Column(
+                    children: [
+                      Text(
+                        "Choose from library",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text("Take Photo"),
+                    ],
+                  ),
+                ),
+                if (state is ImageAndFilePickerLoadInProgress) ...[
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ] else if (state is ImageAndFilePickerFailure) ...[
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Text(state.errorMessage),
+                  ),
+                ],
+                const Text("Create Avatar"),
+              ],
+            );
+          },
         ),
       ),
     );
