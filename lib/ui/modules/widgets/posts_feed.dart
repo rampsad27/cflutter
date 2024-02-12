@@ -19,6 +19,7 @@ class PostsFeed extends StatefulWidget {
 }
 
 class _PostsFeedState extends State<PostsFeed> {
+  bool isLiked = false;
   int selectedIndex = -1;
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
@@ -137,7 +138,14 @@ class _PostsFeedState extends State<PostsFeed> {
                                   BlocBuilder<FeedBloc, FeedState>(
                                     builder: (context, state) {
                                       return IconButton(
+                                        icon: isLiked
+                                            ? const Icon(Icons.favorite)
+                                            : const Icon(Icons.favorite_border),
+                                        color: isLiked ? Colors.red : null,
                                         onPressed: () {
+                                          setState(() {
+                                            isLiked = !isLiked;
+                                          });
                                           BlocProvider.of<FeedBloc>(context).add(
                                               FeedLikeCountIncrementRequested(
                                             likesCount: state is FeedLoadSuccess
@@ -146,8 +154,8 @@ class _PostsFeedState extends State<PostsFeed> {
                                                     .postModelList[index].likes,
                                           ));
                                         },
-                                        icon: const Icon(
-                                            Icons.favorite_border_outlined),
+                                        // icon: const Icon(
+                                        //     Icons.favorite_border_outlined),
                                       );
                                     },
                                   ),
