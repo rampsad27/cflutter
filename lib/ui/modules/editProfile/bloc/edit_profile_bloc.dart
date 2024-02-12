@@ -14,12 +14,15 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       emit(EditProfileDataProgress());
       await Future.delayed(const Duration(seconds: 2));
       await profileRepository.saveUserProfileInfo(event.name, event.username);
+      add(CheckEditProfileData());
+      // add(EditProfileDataRequested());
     });
     on<CheckEditProfileData>((event, emit) async {
       emit(EditProfileDataProgress());
       await Future.delayed(const Duration(seconds: 2));
       // bool isLoggedIn = await authenticationRepository.isUserLoggedIn();
-      profileRepository.getUserProfileInfo();
+      var temp = profileRepository.getUserProfileInfo();
+      emit(EditProfileDataSuccess(name: temp.name));
     });
   }
 }
