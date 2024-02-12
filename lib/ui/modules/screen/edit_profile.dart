@@ -44,17 +44,23 @@ class _EditProfileState extends State<EditProfile> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              radius: 44,
-                              backgroundImage: state
-                                      is ImageAndFilePickerFilePicked
+                              radius: 36,
+                              backgroundImage: () {
+                                if (state is ImageAndFilePickerFilePicked) {
                                   // ignore: unnecessary_cast
-                                  ? FileImage(state.pickedFile!)
-                                      as ImageProvider<Object>
+                                  return FileImage(state.pickedFile!)
+                                      as ImageProvider<Object>;
+                                } else if (state is TakePicturePicked) {
                                   // ignore: unnecessary_cast
-                                  : const NetworkImage(
+                                  return FileImage(state.pickedImage!)
+                                      as ImageProvider<Object>;
+                                } else {
+                                  // ignore: unnecessary_cast
+                                  return const NetworkImage(
                                           "https://imgupscaler.com/images/samples/animal-after.webp")
-                                      as ImageProvider<Object>,
-                              //  as ImageProvider<Object>,
+                                      as ImageProvider<Object>;
+                                }
+                              }(),
                             ),
                             const SizedBox(width: 10),
                             const CircleAvatar(
@@ -70,7 +76,7 @@ class _EditProfileState extends State<EditProfile> {
                             showModalBottomSheet(
                               context: context,
                               builder: (BuildContext context) =>
-                                  const PicureBottomSheet(),
+                                  const PictureBottomSheet(),
                             );
                           },
                           child: const Text("Edit profile or avatar",
@@ -79,16 +85,6 @@ class _EditProfileState extends State<EditProfile> {
                                 fontSize: 18,
                               )),
                         ),
-                        // if (state is ImageAndFilePickerLoadInProgress) ...[
-                        //   const Center(
-                        //     child: CircularProgressIndicator(),
-                        //   ),
-                        // ] else if (state is ImageAndFilePickerFailure) ...[
-                        //   Padding(
-                        //     padding: const EdgeInsets.all(24.0),
-                        //     child: Text(state.errorMessage),
-                        //   ),
-                        // ],
                       ],
                     );
                   },

@@ -78,16 +78,22 @@ class _MyProfileState extends State<MyProfile> {
                             children: [
                               CircleAvatar(
                                 radius: 40,
-                                backgroundImage: state
-                                        is ImageAndFilePickerFilePicked
+                                backgroundImage: () {
+                                  if (state is ImageAndFilePickerFilePicked) {
                                     // ignore: unnecessary_cast
-                                    ? FileImage(state.pickedFile!)
-                                        as ImageProvider<Object>
+                                    return FileImage(state.pickedFile!)
+                                        as ImageProvider<Object>;
+                                  } else if (state is TakePicturePicked) {
                                     // ignore: unnecessary_cast
-                                    : const NetworkImage(
+                                    return FileImage(state.pickedImage!)
+                                        as ImageProvider<Object>;
+                                  } else {
+                                    // ignore: unnecessary_cast
+                                    return const NetworkImage(
                                             "https://imgupscaler.com/images/samples/animal-after.webp")
-                                        as ImageProvider<Object>,
-                                //  as ImageProvider<Object>,
+                                        as ImageProvider<Object>;
+                                  }
+                                }(),
                               ),
                               const SizedBox(width: 60),
                               const Row(

@@ -35,25 +35,21 @@ class ImageAndFilePickerBloc
         emit(ImageAndFilePickerFailure(errorMessage: e.toString()));
       }
     });
-  }
-}
 
-class TakePictureBloc extends Bloc<TakePictureEvent, TakePictureState> {
-  final ImagePicker picker = ImagePicker();
-
-  TakePictureBloc() : super(TakePictureInitial()) {
     on<TakePictureRequested>((event, emit) async {
-      emit(TakePictureLoadInProgress());
+      emit(ImageAndFilePickerLoadInProgress());
       try {
+        final ImagePicker picker = ImagePicker();
         final XFile? result =
             await picker.pickImage(source: ImageSource.camera);
         if (result != null) {
           emit(TakePicturePicked(pickedImage: File(result.path)));
         } else {
-          emit(TakePictureFailure(errorMessage: "User canceled the action"));
+          emit(ImageAndFilePickerFailure(
+              errorMessage: "User canceled the action"));
         }
       } catch (e) {
-        emit(TakePictureFailure(errorMessage: e.toString()));
+        emit(ImageAndFilePickerFailure(errorMessage: e.toString()));
       }
     });
   }

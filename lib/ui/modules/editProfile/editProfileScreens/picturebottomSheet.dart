@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 
-class PicureBottomSheet extends StatefulWidget {
-  const PicureBottomSheet({super.key});
+class PictureBottomSheet extends StatefulWidget {
+  const PictureBottomSheet({super.key});
 
   @override
-  State<PicureBottomSheet> createState() => _PicureBottomSheetState();
+  State<PictureBottomSheet> createState() => _PicureBottomSheetState();
 }
 
-class _PicureBottomSheetState extends State<PicureBottomSheet> {
+class _PicureBottomSheetState extends State<PictureBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -22,7 +22,12 @@ class _PicureBottomSheetState extends State<PicureBottomSheet> {
               insets: EdgeInsets.symmetric(horizontal: 105),
             ),
             tabs: [
-              Tab(icon: Icon(Icons.grid_on_sharp)),
+              Tab(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://imgupscaler.com/images/samples/animal-after.webp"),
+                ),
+              ),
               Tab(icon: Icon(Icons.video_library_outlined)),
             ],
           ),
@@ -32,6 +37,8 @@ class _PicureBottomSheetState extends State<PicureBottomSheet> {
             return TabBarView(
               children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextButton(
                       onPressed: () {
@@ -39,8 +46,11 @@ class _PicureBottomSheetState extends State<PicureBottomSheet> {
                             .read<ImageAndFilePickerBloc>()
                             .add(ImageAndFilePickUpRequested());
                       },
-                      child: const Column(
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
+                          Icon(Icons.photo_library),
+                          SizedBox(width: 8),
                           Text(
                             "Choose from library",
                             style: TextStyle(
@@ -50,38 +60,21 @@ class _PicureBottomSheetState extends State<PicureBottomSheet> {
                         ],
                       ),
                     ),
-                    if (state is ImageAndFilePickerLoadInProgress) ...[
-                      const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ] else if (state is ImageAndFilePickerFailure) ...[
-                      Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: Text(state.errorMessage),
-                      ),
-                    ],
-                    BlocBuilder<TakePictureBloc, TakePictureState>(
-                      builder: (context, state) {
-                        return TextButton(
-                          onPressed: () {
-                            context
-                                .read<TakePictureBloc>()
-                                .add(TakePictureRequested());
-                          },
-                          child: const Text("Take Photo"),
-                        );
+                    TextButton(
+                      onPressed: () {
+                        context
+                            .read<ImageAndFilePickerBloc>()
+                            .add(TakePictureRequested());
                       },
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.camera_alt),
+                          SizedBox(width: 8),
+                          Text("Take Photo"),
+                        ],
+                      ),
                     ),
-                    if (state is TakePictureLoadInProgress) ...[
-                      const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ] else if (state is TakePictureFailure) ...[
-                      const Padding(
-                        padding: EdgeInsets.all(24.0),
-                        child: Text("naa"),
-                      ),
-                    ],
                   ],
                 ),
                 const Text("Create Avatar"),

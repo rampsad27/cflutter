@@ -7,4 +7,4 @@ sealed class TakePictureEvent {}
 
 final class ImageAndFilePickUpRequested extends ImageAndFilePickerEvent {}
 
-final class TakePictureRequested extends TakePictureEvent {}
+final class TakePictureRequested extends ImageAndFilePickerEvent {}

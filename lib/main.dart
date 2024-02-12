@@ -54,7 +54,6 @@ class MyApp extends StatelessWidget {
               ..add(CheckEditProfileData()),
           ),
           BlocProvider(create: (context) => ImageAndFilePickerBloc()),
-          BlocProvider(create: (context) => TakePictureBloc()),
         ],
         child: BlocBuilder<ThemeBloc, ThemeState>(
           builder: (context, themeState) {
