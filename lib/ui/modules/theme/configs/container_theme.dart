@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ig/ui/modules/theme/configs/app_theme.dart';
 
 class ThemeColorContainer {
   static Color getProfileButtonBackgroundColor(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark
-        ? Colors.grey[850]!
-        : Colors.grey[300]!;
+    if (Theme.of(context) == AppTheme.lightTheme) {
+      return const Color.fromARGB(255, 204, 55, 55);
+    } else {
+      return const Color.fromARGB(255, 109, 210, 178);
+    }
   }
-
-  // static Color getGridContainerColor(BuildContext context) {
-  //   return Theme.of(context).brightness == Brightness.dark
-  //       ? Colors.grey[850]!
-  //       : Colors.grey[300]!;
-  // }
 }

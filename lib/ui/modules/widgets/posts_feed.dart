@@ -18,7 +18,7 @@ class PostsFeed extends StatefulWidget {
 }
 
 class _PostsFeedState extends State<PostsFeed> {
-  bool isLiked = false;
+  // bool isLiked = false;
   int selectedIndex = -1;
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
@@ -137,24 +137,48 @@ class _PostsFeedState extends State<PostsFeed> {
                                   BlocBuilder<FeedBloc, FeedState>(
                                     builder: (context, state) {
                                       return IconButton(
-                                        icon: isLiked
-                                            ? const Icon(Icons.favorite)
+                                        icon: widget
+                                                .postModelList[index].isLiked
+                                            ? const Icon(Icons.favorite,
+                                                color: Colors.red)
                                             : const Icon(Icons.favorite_border),
-                                        color: isLiked ? Colors.red : null,
                                         onPressed: () {
                                           setState(() {
-                                            isLiked = !isLiked;
+                                            widget.postModelList[index] = widget
+                                                .postModelList[index]
+                                                .copyWith(
+                                              isLiked: !widget
+                                                  .postModelList[index].isLiked,
+                                            );
+                                            //unliked
+                                            if (widget
+                                                .postModelList[index].isLiked) {
+                                              widget.postModelList[index] =
+                                                  widget.postModelList[index]
+                                                      .copyWith();
+                                              BlocProvider.of<FeedBloc>(context)
+                                                  .add(
+                                                FeedLikeCountIncrementRequested(
+                                                  likesCount: widget
+                                                      .postModelList[index]
+                                                      .likes,
+                                                ),
+                                              );
+                                            } else {
+                                              widget.postModelList[index] =
+                                                  widget.postModelList[index]
+                                                      .copyWith();
+                                              BlocProvider.of<FeedBloc>(context)
+                                                  .add(
+                                                FeedLikeCountDecrementRequested(
+                                                  likesCount: widget
+                                                      .postModelList[index]
+                                                      .likes,
+                                                ),
+                                              );
+                                            }
                                           });
-                                          BlocProvider.of<FeedBloc>(context).add(
-                                              FeedLikeCountIncrementRequested(
-                                            likesCount: state is FeedLoadSuccess
-                                                ? state.likesCount
-                                                : widget
-                                                    .postModelList[index].likes,
-                                          ));
                                         },
-                                        // icon: const Icon(
-                                        //     Icons.favorite_border_outlined),
                                       );
                                     },
                                   ),

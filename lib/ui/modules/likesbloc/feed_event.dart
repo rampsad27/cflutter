@@ -10,3 +10,12 @@ class FeedLikeCountIncrementRequested extends FeedEvent {
   @override
   List<Object?> get props => [];
 }
+
+class FeedLikeCountDecrementRequested extends FeedEvent {
+  final int likesCount;
+  FeedLikeCountDecrementRequested({
+    required this.likesCount,
+  });
+  @override
+  List<Object?> get props => [];
+}

@@ -12,8 +12,6 @@ class ProfileNum extends StatelessWidget {
       children: [
         Text(
           value,
-          style:
-              const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         Text(title),
       ],

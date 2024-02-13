@@ -139,7 +139,8 @@ class _MyProfileState extends State<MyProfile> {
                             child: buildProfileButton("Share profile"),
                           ),
                           const SizedBox(width: 2),
-                          buildProfileIconButton(Icons.person_add_alt_sharp),
+                          buildProfileIconButton(
+                              context, Icons.person_add_alt_sharp),
                         ],
                       ),
                       const SizedBox(height: 10),
