@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ig/ui/modules/bloc/feed_bloc.dart';
-
 import 'package:ig/ui/modules/components/model.dart';
+import 'package:ig/ui/modules/likesbloc/feed_bloc.dart';
 import 'package:ig/ui/modules/widgets/bottomsheet.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:readmore/readmore.dart';
