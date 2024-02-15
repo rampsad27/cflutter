@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ig/ui/modules/theme/configs/container_theme.dart';
 
-Widget buildProfileButton(String text) {
-  // Color backgroundColor = ThemeColorContainer.getProfileButtonBackgroundColor(context);
-
+Widget buildProfileButton(BuildContext context, String text) {
   return Container(
     decoration: BoxDecoration(
-      color: const Color.fromARGB(255, 203, 203, 203),
+      color: ThemeColorContainer.getContainerBackgroundColor(context),
       borderRadius: BorderRadius.circular(8),
     ),
     height: 30,

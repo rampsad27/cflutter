@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ig/ui/modules/loginauth/repository/profile_repository.dart';
+import 'package:ig/repository/profile_repository.dart';
 
 part 'edit_profile_event.dart';
 part 'edit_profile_state.dart';

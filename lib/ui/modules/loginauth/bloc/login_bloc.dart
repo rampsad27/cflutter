@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
+import 'package:ig/repository/authentication_repository.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

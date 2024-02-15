@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ig/ui/modules/theme/configs/container_theme.dart';
 
 class MyBottomSheet extends StatelessWidget {
   const MyBottomSheet({super.key});
@@ -18,7 +19,8 @@ class MyBottomSheet extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 204, 201, 201),
+                    color: ThemeColorContainer.getContainerBackgroundColor(
+                        context),
                     borderRadius: BorderRadius.circular(10)),
                 width: 175,
                 height: 70,
@@ -37,7 +39,8 @@ class MyBottomSheet extends StatelessWidget {
               const SizedBox(width: 10),
               Container(
                 decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 204, 201, 201),
+                    color: ThemeColorContainer.getContainerBackgroundColor(
+                        context),
                     borderRadius: BorderRadius.circular(10)),
                 width: 175,
                 height: 70,
@@ -58,7 +61,7 @@ class MyBottomSheet extends StatelessWidget {
           const SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 204, 201, 201),
+                color: ThemeColorContainer.getContainerBackgroundColor(context),
                 borderRadius: BorderRadius.circular(10)),
             height: 54,
             width: double.infinity,
@@ -89,7 +92,7 @@ class MyBottomSheet extends StatelessWidget {
           const SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 204, 201, 201),
+                color: ThemeColorContainer.getContainerBackgroundColor(context),
                 borderRadius: BorderRadius.circular(10)),
             height: 80,
             width: double.infinity,
@@ -121,7 +124,7 @@ class MyBottomSheet extends StatelessWidget {
           const SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 204, 201, 201),
+                color: ThemeColorContainer.getContainerBackgroundColor(context),
                 borderRadius: BorderRadius.circular(10)),
             height: 160,
             width: double.infinity,

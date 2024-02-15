@@ -42,5 +42,10 @@ class UserNameModel {
 class UserProfileNameModel {
   final String name;
   final String username;
-  UserProfileNameModel({required this.name, required this.username});
+  final String bio;
+  UserProfileNameModel({
+    required this.name,
+    required this.username,
+    required this.bio,
+  });
 }

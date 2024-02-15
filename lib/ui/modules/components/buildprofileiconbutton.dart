@@ -4,7 +4,7 @@ import 'package:ig/ui/modules/theme/configs/container_theme.dart';
 Widget buildProfileIconButton(BuildContext context, IconData icon) {
   return Container(
     decoration: BoxDecoration(
-      color: ThemeColorContainer.getProfileButtonBackgroundColor(context),
+      color: ThemeColorContainer.getContainerBackgroundColor(context),
       borderRadius: BorderRadius.circular(8),
     ),
     height: 30,
@@ -12,7 +12,7 @@ Widget buildProfileIconButton(BuildContext context, IconData icon) {
     child: Icon(
       icon,
       size: 18,
-      color: Theme.of(context).iconTheme.color,
+      // color: Theme.of(context).iconTheme.color,
     ),
   );
 }

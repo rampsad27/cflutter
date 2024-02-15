@@ -6,8 +6,8 @@ import 'package:ig/ui/modules/components/buildprofilebutton.dart';
 import 'package:ig/ui/modules/components/buildprofileiconbutton.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
-import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
-import 'package:ig/ui/modules/loginauth/repository/profile_repository.dart';
+import 'package:ig/repository/authentication_repository.dart';
+import 'package:ig/repository/profile_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
 import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
 
@@ -69,6 +69,8 @@ class _MyProfileState extends State<MyProfile> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BlocBuilder<ImageAndFilePickerBloc,
                           ImageAndFilePickerState>(
@@ -112,6 +114,7 @@ class _MyProfileState extends State<MyProfile> {
                           );
                         },
                       ),
+                      const SizedBox(width: 70),
                       Text(context
                           .read<ProfileRepository>()
                           .getUserProfileInfo()
@@ -127,7 +130,7 @@ class _MyProfileState extends State<MyProfile> {
                                     builder: (context) => const EditProfile()),
                               );
                             },
-                            child: buildProfileButton("Edit profile"),
+                            child: buildProfileButton(context, "Edit profile"),
                           ),
                           const SizedBox(width: 2),
                           InkWell(
@@ -136,7 +139,7 @@ class _MyProfileState extends State<MyProfile> {
                                   .read<LoginBloc>()
                                   .add(LogInLogOutRequested());
                             },
-                            child: buildProfileButton("Share profile"),
+                            child: buildProfileButton(context, "Share profile"),
                           ),
                           const SizedBox(width: 2),
                           buildProfileIconButton(

@@ -4,8 +4,8 @@ import 'package:ig/ui/modules/editProfile/bloc/edit_profile_bloc.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
 
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
-import 'package:ig/ui/modules/loginauth/repository/authentication_repository.dart';
-import 'package:ig/ui/modules/loginauth/repository/profile_repository.dart';
+import 'package:ig/repository/authentication_repository.dart';
+import 'package:ig/repository/profile_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
 import 'package:ig/ui/modules/screen/feed.dart';
 import 'package:ig/ui/modules/screen/myprofile.dart';
