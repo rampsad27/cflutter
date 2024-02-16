@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:instagram_app/data/home_screen_data.dart';
 import 'package:instagram_app/modules/ui/components/bottom_navigation_bar.dart';
 import 'package:instagram_app/modules/ui/components/post_item.dart';
 import 'package:instagram_app/modules/ui/components/story_component.dart';
+import 'package:instagram_app/modules/ui/theme/bloc/theme_bloc.dart';
+import 'package:instagram_app/modules/ui/theme/configs/app_theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,6 +36,36 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 188, 188, 188),
+              borderRadius: BorderRadius.circular(60),
+            ),
+            height: 40,
+            width: 96,
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    context.read<ThemeBloc>().add(
+                        ThemeChangeRequested(themeData: AppTheme.lightTheme));
+                  },
+                  icon: const Icon(
+                    Icons.sunny,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    context.read<ThemeBloc>().add(
+                        ThemeChangeRequested(themeData: AppTheme.darkTheme));
+                  },
+                  icon: const Icon(
+                    Icons.nightlight_round_outlined,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Stack(
             children: [
               IconButton(

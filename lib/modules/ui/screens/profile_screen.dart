@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      // backgroundColor: Colors.black,
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(
@@ -49,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             return [
               SliverAppBar(
                 automaticallyImplyLeading: false,
-                backgroundColor: Colors.black,
+                // backgroundColor: Colors.black,
                 pinned: false,
                 floating: true,
                 title: Text(

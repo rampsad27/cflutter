@@ -23,16 +23,6 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
-  // bool isLiked = false;
-  // late int likeCount;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   isLiked = widget.post.isLiked;
-  //   likeCount = widget.post.likeCount;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Column(
