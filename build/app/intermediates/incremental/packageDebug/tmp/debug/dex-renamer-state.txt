@@ -1,0 +1,4 @@
+#Fri Feb 16 10:44:31 NPT 2024
+base.0=C\:\\Users\\saina\\Documents\\class-flutter\\flutter\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

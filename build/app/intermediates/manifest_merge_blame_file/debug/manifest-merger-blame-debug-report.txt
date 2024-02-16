@@ -1,0 +1,215 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.instagram_app"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="33" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\saina\Documents\class-flutter\flutter\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\Users\saina\Documents\class-flutter\flutter\android\app\src\debug\AndroidManifest.xml:6:22-64
+16    <uses-permission
+16-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-11:38
+17        android:name="android.permission.READ_EXTERNAL_STORAGE"
+17-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-64
+18        android:maxSdkVersion="32" />
+18-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-35
+19
+20    <queries>
+20-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-19:15
+21        <intent>
+21-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-18:18
+22            <action android:name="android.intent.action.GET_CONTENT" />
+22-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-72
+22-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:21-69
+23
+24            <data android:mimeType="*/*" />
+24-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-44
+24-->[:file_picker] C:\Users\saina\Documents\class-flutter\flutter\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:17:19-41
+25        </intent>
+26    </queries>
+27
+28    <permission
+28-->[androidx.core:core:1.10.1] C:\Users\saina\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
+29        android:name="com.example.instagram_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.10.1] C:\Users\saina\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.10.1] C:\Users\saina\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.example.instagram_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.10.1] C:\Users\saina\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.10.1] C:\Users\saina\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:26:22-94
+33
+34    <application
+35        android:name="android.app.Application"
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.10.1] C:\Users\saina\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
+37        android:debuggable="true"
+38        android:icon="@mipmap/ic_launcher"
+39        android:label="instagram_app" >
+40        <activity
+41            android:name="com.example.instagram_app.MainActivity"
+42            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+43            android:enableOnBackInvokedCallback="true"
+44            android:exported="true"
+45            android:hardwareAccelerated="true"
+46            android:launchMode="singleTop"
+47            android:theme="@style/LaunchTheme"
+48            android:windowSoftInputMode="adjustResize" >
+49
+50            <!--
+51                 Specifies an Android theme to apply to this Activity as soon as
+52                 the Android process has started. This theme is visible to the user
+53                 while the Flutter UI initializes. After that, this theme continues
+54                 to determine the Window background behind the Flutter UI.
+55            -->
+56            <meta-data
+57                android:name="io.flutter.embedding.android.NormalTheme"
+58                android:resource="@style/NormalTheme" />
+59
+60            <intent-filter>
+61                <action android:name="android.intent.action.MAIN" />
+62
+63                <category android:name="android.intent.category.LAUNCHER" />
+64            </intent-filter>
+65        </activity>
+66        <!--
+67             Don't delete the meta-data below.
+68             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+69        -->
+70        <meta-data
+71            android:name="flutterEmbedding"
+72            android:value="2" />
+73
+74        <provider
+74-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+75            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+75-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+76            android:authorities="com.example.instagram_app.flutter.image_provider"
+76-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+77            android:exported="false"
+77-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+78            android:grantUriPermissions="true" >
+78-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+79            <meta-data
+79-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+80                android:name="android.support.FILE_PROVIDER_PATHS"
+80-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+81                android:resource="@xml/flutter_image_picker_file_paths" />
+81-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+82        </provider>
+83        <!--
+84           Declares a provider which allows us to store files to share in
+85           '.../caches/share_plus' and grant the receiving action access
+86        -->
+87        <provider
+87-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-23:20
+88            android:name="dev.fluttercommunity.plus.share.ShareFileProvider"
+88-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-77
+89            android:authorities="com.example.instagram_app.flutter.share_provider"
+89-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-74
+90            android:exported="false"
+90-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+91            android:grantUriPermissions="true" >
+91-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-47
+92            <meta-data
+92-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+93                android:name="android.support.FILE_PROVIDER_PATHS"
+93-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+94                android:resource="@xml/flutter_share_file_paths" />
+94-->[:image_picker_android] C:\Users\saina\Documents\class-flutter\flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+95        </provider>
+96        <!--
+97           This manifest declared broadcast receiver allows us to use an explicit
+98           Intent when creating a PendingItent to be informed of the user's choice
+99        -->
+100        <receiver
+100-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:28:9-34:20
+101            android:name="dev.fluttercommunity.plus.share.SharePlusPendingIntent"
+101-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-82
+102            android:exported="false" >
+102-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-37
+103            <intent-filter>
+103-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:31:13-33:29
+104                <action android:name="EXTRA_CHOSEN_COMPONENT" />
+104-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-65
+104-->[:share_plus] C:\Users\saina\Documents\class-flutter\flutter\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:32:25-62
+105            </intent-filter>
+106        </receiver>
+107
+108        <uses-library
+108-->[androidx.window:window:1.0.0-beta04] C:\Users\saina\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+109            android:name="androidx.window.extensions"
+109-->[androidx.window:window:1.0.0-beta04] C:\Users\saina\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+110            android:required="false" />
+110-->[androidx.window:window:1.0.0-beta04] C:\Users\saina\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+111        <uses-library
+111-->[androidx.window:window:1.0.0-beta04] C:\Users\saina\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+112            android:name="androidx.window.sidecar"
+112-->[androidx.window:window:1.0.0-beta04] C:\Users\saina\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+113            android:required="false" />
+113-->[androidx.window:window:1.0.0-beta04] C:\Users\saina\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+114
+115        <provider
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+116            android:name="androidx.startup.InitializationProvider"
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+117            android:authorities="com.example.instagram_app.androidx-startup"
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+118            android:exported="false" >
+118-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+119            <meta-data
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+120                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+121                android:value="androidx.startup" />
+121-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+122        </provider>
+123
+124        <receiver
+124-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+125            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+126            android:directBootAware="false"
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+127            android:enabled="true"
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+128            android:exported="true"
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+129            android:permission="android.permission.DUMP" >
+129-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+130            <intent-filter>
+130-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+131                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+132            </intent-filter>
+133            <intent-filter>
+133-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+134                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+134-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+134-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+135            </intent-filter>
+136            <intent-filter>
+136-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+137                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+138            </intent-filter>
+139            <intent-filter>
+139-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+140                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\saina\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+141            </intent-filter>
+142        </receiver>
+143    </application>
+144
+145</manifest>
