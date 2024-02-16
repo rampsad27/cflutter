@@ -5,13 +5,14 @@ import 'package:instagram_app/bloc/like/like_bloc.dart';
 import 'package:instagram_app/extension/int_extension.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:instagram_app/models/post_model.dart';
+import 'package:instagram_app/modules/ui/likes/likesbloc/feed_bloc.dart';
 import 'package:readmore/readmore.dart';
 import 'package:share_plus/share_plus.dart';
 
 class PostItem extends StatefulWidget {
-  final PostModel post;
+  PostModel post;
   final void Function(PostModel, bool) onLikePressed;
-  const PostItem({
+  PostItem({
     Key? key,
     required this.post,
     required this.onLikePressed,
@@ -22,15 +23,15 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
-  bool isLiked = false;
-  late int likeCount;
+  // bool isLiked = false;
+  // late int likeCount;
 
-  @override
-  void initState() {
-    super.initState();
-    isLiked = widget.post.isLiked;
-    likeCount = widget.post.likeCount;
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   isLiked = widget.post.isLiked;
+  //   likeCount = widget.post.likeCount;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +42,38 @@ class _PostItemState extends State<PostItem> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(
-                icon: isLiked
-                    ? const Icon(Icons.favorite, color: Colors.red)
-                    : const Icon(Icons.favorite_border),
-                onPressed: () {}),
+            BlocBuilder<FeedBloc, FeedState>(
+              builder: (context, state) {
+                return IconButton(
+                  icon: widget.post.isLiked
+                      ? const Icon(Icons.favorite, color: Colors.red)
+                      : const Icon(Icons.favorite_border),
+                  onPressed: () {
+                    setState(() {
+                      widget.post = widget.post.copyWith(
+                        isLiked: !widget.post.isLiked,
+                      );
+                      //unliked
+                      if (widget.post.isLiked) {
+                        widget.post = widget.post.copyWith();
+                        BlocProvider.of<FeedBloc>(context).add(
+                          FeedLikeCountIncrementRequested(
+                            likesCount: widget.post.likeCount,
+                          ),
+                        );
+                      } else {
+                        widget.post = widget.post.copyWith();
+                        BlocProvider.of<FeedBloc>(context).add(
+                          FeedLikeCountDecrementRequested(
+                            likesCount: widget.post.likeCount,
+                          ),
+                        );
+                      }
+                    });
+                  },
+                );
+              },
+            ),
             IconButton(
               onPressed: () {},
               icon: SvgPicture.asset(
@@ -79,22 +107,20 @@ class _PostItemState extends State<PostItem> {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              "$likeCount likes",
-              style: const TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-        Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.post.username,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
+            BlocBuilder<FeedBloc, FeedState>(
+              builder: (context, state) {
+                if (state is FeedLoadSuccess) {
+                  return Text(
+                    "${state.likesCount} likes",
+                    style: const TextStyle(color: Colors.white),
+                  );
+                } else {
+                  return Text("${widget.post.likeCount} likes",
+                      style: const TextStyle(color: Colors.white));
+                }
+              },
             ),
             const SizedBox(width: 4),
             Expanded(
@@ -115,12 +141,12 @@ class _PostItemState extends State<PostItem> {
 }
 
 class UserDetailsWidget extends StatelessWidget {
-  const UserDetailsWidget({
+  UserDetailsWidget({
     super.key,
     required this.post,
   });
 
-  final PostModel post;
+  PostModel post;
 
   @override
   Widget build(BuildContext context) {

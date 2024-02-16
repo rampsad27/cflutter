@@ -16,7 +16,7 @@ class HomeScreenData {
       likeCount: 1000000000,
       commentCount: "32",
       isSaved: false,
-      isLiked: true,
+      isLiked: false,
     ),
     PostModel(
       caption: "Chasing sunsets and dreams. ☀️✨",

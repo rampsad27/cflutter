@@ -25,7 +25,7 @@ class _PostComponentState extends State<PostComponent> {
               // physics: const NeverScrollableScrollPhysics(),
               itemCount: HomeScreenData.postModelList.length,
               itemBuilder: (context, index) {
-                final post = HomeScreenData.postModelList[index];
+                var post = HomeScreenData.postModelList[index];
                 // final isliked = HomeScreenData.postModelList[index].isLiked;
                 return PostItem(
                   post: post,
