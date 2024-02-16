@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/ui/modules/editProfile/bloc/edit_profile_bloc.dart';
 import 'package:ig/ui/modules/imagePicker/bloc/imagepicker_bloc.dart';
+import 'package:ig/ui/modules/likesbloc/feed_bloc.dart';
 
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
 import 'package:ig/repository/authentication_repository.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
               ..add(CheckEditProfileData()),
           ),
           BlocProvider(create: (context) => ImageAndFilePickerBloc()),
+          BlocProvider(create: (context) => FeedBloc()),
         ],
         child: BlocBuilder<ThemeBloc, ThemeState>(
           builder: (context, themeState) {

@@ -18,8 +18,9 @@ final class EditProfileDataFailure extends EditProfileState {
 
 final class EditProfileDataSuccess extends EditProfileState {
   final String name;
+  final String username;
 
-  const EditProfileDataSuccess({required this.name});
+  const EditProfileDataSuccess({required this.name, required this.username});
   @override
-  List<Object> get props => [name];
+  List<Object> get props => [name, username];
 }

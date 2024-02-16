@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ig/ui/modules/editProfile/bloc/edit_profile_bloc.dart';
 
 class UserName extends StatefulWidget {
   const UserName({super.key});
@@ -88,8 +90,11 @@ class _NameState extends State<UserName> {
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 suffixIcon: Icon(Icons.close),
               ),
+              onFieldSubmitted: (value) => context.read<EditProfileBloc>().add(
+                  EditProfileDataRequested(
+                      name: "", username: _controller.text)),
             ),
-            const SizedBox(height: 20), // Add some space
+            const SizedBox(height: 20),
           ],
         ),
       ),

@@ -24,6 +24,6 @@ class ProfileRepository {
     var name = preferences?.getString(_name);
     var username = preferences?.getString(_username);
     return UserProfileNameModel(
-        name: name ?? "Add Name", username: username ?? "add", bio: "hi");
+        name: name ?? " ", username: username ?? " ", bio: " ");
   }
 }

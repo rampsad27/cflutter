@@ -95,10 +95,10 @@ class _EditProfileState extends State<EditProfile> {
                   value: state is EditProfileDataSuccess ? state.name : "",
                   destinationPage: const Name(),
                 ),
-                const MyEditProfileWidget(
+                MyEditProfileWidget(
                   title: "Username",
-                  value: "add",
-                  destinationPage: UserName(),
+                  value: state is EditProfileDataSuccess ? state.username : "",
+                  destinationPage: const UserName(),
                 ),
                 const MyEditProfileWidget(
                   title: "Pronouns",

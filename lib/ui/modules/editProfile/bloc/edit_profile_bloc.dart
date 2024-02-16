@@ -22,7 +22,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       await Future.delayed(const Duration(seconds: 1));
       // bool isLoggedIn = await authenticationRepository.isUserLoggedIn();
       var temp = profileRepository.getUserProfileInfo();
-      emit(EditProfileDataSuccess(name: temp.name));
+      emit(EditProfileDataSuccess(name: temp.name, username: temp.username));
     });
   }
 }
