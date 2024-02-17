@@ -20,7 +20,7 @@ class BookListData {
         name: "Decision in Normandy",
         author: "Carlo D'Este",
         coverImage:
-            "http://images.amazon.com/images/P/0060973129.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "HarperPerennial",
         yearOfPub: "1991"),
     BookListModel(
@@ -28,21 +28,21 @@ class BookListData {
             "Flu: The Story of the Great Influenza Pandemic of 1918 and the Search for the Virus That Caused It",
         author: "Gina Bari Kolata",
         coverImage:
-            "http://images.amazon.com/images/P/0374157065.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Farrar Straus Giroux",
         yearOfPub: "1999"),
     BookListModel(
         name: "The Mummies of Urumchi",
         author: "E. J. W. Barber",
         coverImage:
-            "http://images.amazon.com/images/P/0393045218.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "W. W. Norton &amp; Company",
         yearOfPub: "1999"),
     BookListModel(
         name: "The Kitchen God's Wife",
         author: "Amy Tan",
         coverImage:
-            "http://images.amazon.com/images/P/0399135782.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Putnam Pub Group",
         yearOfPub: "1991"),
     BookListModel(
@@ -50,14 +50,14 @@ class BookListData {
             "What If?: The World's Foremost Military Historians Imagine What Might Have Been",
         author: "Robert Cowley",
         coverImage:
-            "http://images.amazon.com/images/P/0425176428.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Berkley Publishing Group",
         yearOfPub: "2000"),
     BookListModel(
         name: "PLEADING GUILTY",
         author: "Scott Turow",
         coverImage:
-            "http://images.amazon.com/images/P/0671870432.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAD7WW3V_lQ/1/0/1003w/canva-colorful-illustration-children%27s-book-cover-w81oB8vajFE.jpg",
         publisher: "Audioworks",
         yearOfPub: "1993"),
     BookListModel(
@@ -65,21 +65,21 @@ class BookListData {
             "Under the Black Flag: The Romance and the Reality of Life Among the Pirates",
         author: "David Cordingly",
         coverImage:
-            "http://images.amazon.com/images/P/0679425608.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAD7WW3V_lQ/1/0/1003w/canva-colorful-illustration-children%27s-book-cover-w81oB8vajFE.jpg",
         publisher: "Random House",
         yearOfPub: "1996"),
     BookListModel(
         name: "Where You'll Find Me: And Other Stories",
         author: "Ann Beattie",
         coverImage:
-            "http://images.amazon.com/images/P/074322678X.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAD7WW3V_lQ/1/0/1003w/canva-colorful-illustration-children%27s-book-cover-w81oB8vajFE.jpg",
         publisher: "Scribner",
         yearOfPub: "2002"),
     BookListModel(
         name: "Nights Below Station Street",
         author: "David Adams Richards",
         coverImage:
-            "http://images.amazon.com/images/P/0771074670.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAD7WW3V_lQ/1/0/1003w/canva-colorful-illustration-children%27s-book-cover-w81oB8vajFE.jpg",
         publisher: "Emblem Editions",
         yearOfPub: "1988"),
     BookListModel(
@@ -87,7 +87,7 @@ class BookListData {
             "Hitler's Secret Bankers: The Myth of Swiss Neutrality During the Holocaust",
         author: "Adam Lebor",
         coverImage:
-            "http://images.amazon.com/images/P/080652121X.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAD7WW3V_lQ/1/0/1003w/canva-colorful-illustration-children%27s-book-cover-w81oB8vajFE.jpg",
         publisher: "Citadel Press",
         yearOfPub: "2000"),
     BookListModel(
