@@ -1,5 +1,7 @@
+import 'package:extraaa/ui/modules/bloc/book_bloc.dart';
 import 'package:extraaa/ui/modules/screen/booklist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,7 +31,11 @@ class HomeScreen extends StatelessWidget {
                   icon: const Icon(Icons.arrow_drop_down),
                 ),
                 const Spacer(),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.list))
+                IconButton(
+                    onPressed: () {
+                      context.read<ViewBloc>().add(ToggleViewEvent());
+                    },
+                    icon: const Icon(Icons.list))
               ],
             ),
             const Expanded(child: BookList()),
