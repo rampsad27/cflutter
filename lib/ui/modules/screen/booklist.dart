@@ -32,8 +32,8 @@ class _BookListState extends State<BookList> {
     // );
     return ListView.builder(
         shrinkWrap: true, // Limit the grid
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: BookListData.bookList.length,
+        physics: const AlwaysScrollableScrollPhysics(),
+        itemCount: 283,
         itemBuilder: (context, index) {
           return Column(
             children: [

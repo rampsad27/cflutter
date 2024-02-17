@@ -17,23 +17,25 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                const Text("All"),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.arrow_drop_down),
-                ),
-                const Spacer(),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.list))
-              ],
-            ),
-            const BookList(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const Text("All"),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.arrow_drop_down),
+                  ),
+                  const Spacer(),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.list))
+                ],
+              ),
+              const BookList(),
+            ],
+          ),
         ),
       ),
     );
