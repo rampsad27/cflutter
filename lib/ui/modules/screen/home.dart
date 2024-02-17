@@ -32,10 +32,11 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 IconButton(
-                    onPressed: () {
-                      context.read<ViewBloc>().add(ToggleViewEvent());
-                    },
-                    icon: const Icon(Icons.list))
+                  onPressed: () {
+                    context.read<ViewBloc>().add(LayoutViewEvent());
+                  },
+                  icon: const Icon(Icons.list),
+                )
               ],
             ),
             const Expanded(child: BookList()),
