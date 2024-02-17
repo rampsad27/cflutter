@@ -14,7 +14,7 @@ class GridViewShow extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: 4.0,
         mainAxisSpacing: 4.0,
-        childAspectRatio: 1 / 1.5,
+        childAspectRatio: 0.8 / 1.5,
       ),
       itemBuilder: (BuildContext context, int index) {
         final book = BookListData.bookList[index];
@@ -34,6 +34,7 @@ class GridViewShow extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 4),
               Text(
                 book.name,
                 style: const TextStyle(

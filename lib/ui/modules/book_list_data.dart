@@ -8,21 +8,21 @@ class BookListData {
         coverImage:
             "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg",
         publisher: "Oxford University Press",
-        yearOfPub: "2002"),
+        yearOfPub: "202"),
     BookListModel(
         name: "Clara Callan",
         author: "Richard Bruce Wright",
         coverImage:
             "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg",
         publisher: "HarperFlamingo Canada",
-        yearOfPub: "2001"),
+        yearOfPub: "1001"),
     BookListModel(
         name: "Decision in Normandy",
         author: "Carlo D'Este",
         coverImage:
             "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "HarperPerennial",
-        yearOfPub: "1991"),
+        yearOfPub: "191"),
     BookListModel(
         name:
             "Flu: The Story of the Great Influenza Pandemic of 1918 and the Search for the Virus That Caused It",
@@ -30,21 +30,21 @@ class BookListData {
         coverImage:
             "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Farrar Straus Giroux",
-        yearOfPub: "1999"),
+        yearOfPub: "199"),
     BookListModel(
         name: "The Mummies of Urumchi",
         author: "E. J. W. Barber",
         coverImage:
             "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "W. W. Norton &amp; Company",
-        yearOfPub: "1999"),
+        yearOfPub: "199"),
     BookListModel(
         name: "The Kitchen God's Wife",
         author: "Amy Tan",
         coverImage:
             "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Putnam Pub Group",
-        yearOfPub: "1991"),
+        yearOfPub: "191"),
     BookListModel(
         name:
             "What If?: The World's Foremost Military Historians Imagine What Might Have Been",
@@ -67,7 +67,7 @@ class BookListData {
         coverImage:
             "https://marketplace.canva.com/EAD7WW3V_lQ/1/0/1003w/canva-colorful-illustration-children%27s-book-cover-w81oB8vajFE.jpg",
         publisher: "Random House",
-        yearOfPub: "1996"),
+        yearOfPub: "996"),
     BookListModel(
         name: "Where You'll Find Me: And Other Stories",
         author: "Ann Beattie",
