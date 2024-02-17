@@ -6,14 +6,14 @@ class BookListData {
         name: "Classical Mythology",
         author: "Mark P. O. Morford",
         coverImage:
-            "http://images.amazon.com/images/P/0195153448.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg",
         publisher: "Oxford University Press",
         yearOfPub: "2002"),
     BookListModel(
         name: "Clara Callan",
         author: "Richard Bruce Wright",
         coverImage:
-            "http://images.amazon.com/images/P/0002005018.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFPHUaBrFc/1/0/1003w/canva-black-and-white-modern-alone-story-book-cover-QHBKwQnsgzs.jpg",
         publisher: "HarperFlamingo Canada",
         yearOfPub: "2001"),
     BookListModel(

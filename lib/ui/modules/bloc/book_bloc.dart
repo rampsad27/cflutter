@@ -6,6 +6,8 @@ part 'book_state.dart';
 
 class BookBloc extends Bloc<BookEvent, BookState> {
   BookBloc() : super(BookInitial()) {
-    on<BookEvent>((event, emit) {});
+    on<ChangeLayout>((event, emit) {
+      // emit ( list )
+    });
   }
 }
