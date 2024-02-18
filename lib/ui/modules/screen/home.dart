@@ -40,6 +40,14 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const Expanded(child: BookList()),
+            const SizedBox(height: 10),
+            Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.circular(32),
+                    color: Colors.blue),
+                width: double.infinity,
+                height: 40,
+                child: const Center(child: Text("Continue"))),
           ],
         ),
       ),

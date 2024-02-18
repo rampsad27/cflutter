@@ -18,38 +18,37 @@ class GridViewShow extends StatelessWidget {
       ),
       itemBuilder: (BuildContext context, int index) {
         final book = BookListData.bookList[index];
-        return Container(
-          // color: Colors.teal,
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: NetworkImage(book.coverImage),
-                      fit: BoxFit.cover,
-                    ),
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  image: DecorationImage(
+                    image: NetworkImage(book.coverImage),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                book.name,
-                style: const TextStyle(
-                    fontSize: 14, color: Color.fromARGB(255, 0, 0, 0)),
-                overflow: TextOverflow.ellipsis, // Prevent overflow
-              ),
-              Text(
-                book.author,
-                style: const TextStyle(
-                    fontSize: 12, color: Color.fromARGB(179, 100, 100, 100)),
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 10),
-            ],
-          ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              book.name,
+              style: const TextStyle(
+                  fontSize: 14, color: Color.fromARGB(255, 0, 0, 0)),
+              overflow: TextOverflow.ellipsis, // Prevent overflow
+            ),
+            Text(
+              book.author,
+              style: const TextStyle(
+                  fontSize: 12, color: Color.fromARGB(179, 100, 100, 100)),
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 10),
+          ],
         );
       },
     );
