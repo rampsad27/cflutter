@@ -19,9 +19,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
         if (event.username.isNotEmpty) {
           username = event.username;
         }
-        if (event.username.isNotEmpty) {
-          username = event.username;
-        }
+        // if (event.username.isNotEmpty) {
+        //   username = event.bio;
+        // }
         //   await ProfileRepository.saveUserProfileInfo(name, username);
         //   emit(const EditProfileDataSuccess());
         //   add(const EditProfileDataRequested());
@@ -44,4 +44,5 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
   }
   String name = "";
   String username = "";
+//   String bio = "";
 }
