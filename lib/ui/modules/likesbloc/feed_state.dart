@@ -31,11 +31,11 @@ final class FeedLoadSuccess extends FeedState {
   List<Object?> get props => [likesCount];
 }
 
-// class FeedLikeCountUpdated extends FeedState {
-//   final int likesCount;
+class FeedLikeCountUpdated extends FeedState {
+  final int likesCount;
 
-//   FeedLikeCountUpdated({required this.likesCount});
+  FeedLikeCountUpdated({required this.likesCount});
 
-//   @override
-//   List<Object?> get props => [likesCount];
-// }
+  @override
+  List<Object?> get props => [likesCount];
+}

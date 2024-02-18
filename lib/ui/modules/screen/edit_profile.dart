@@ -44,7 +44,7 @@ class _EditProfileState extends State<EditProfile> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              radius: 36,
+                              radius: 38,
                               backgroundImage: () {
                                 if (state is ImageAndFilePickerFilePicked) {
                                   // ignore: unnecessary_cast
@@ -64,7 +64,7 @@ class _EditProfileState extends State<EditProfile> {
                             ),
                             const SizedBox(width: 10),
                             const CircleAvatar(
-                              radius: 44,
+                              radius: 38,
                               backgroundImage: NetworkImage(
                                   "https://banner2.cleanpng.com/20201031/xyt/transparent-sports-icon-man-icon-man-practicing-exercise-icon-5f9e1c08c5de08.3937662516041973848105.jpg"),
                             ),
@@ -90,15 +90,28 @@ class _EditProfileState extends State<EditProfile> {
                   },
                 ),
                 const SizedBox(height: 16),
-                MyEditProfileWidget(
-                  title: "Name",
-                  value: state is EditProfileDataSuccess ? state.name : "",
-                  destinationPage: const Name(),
+                BlocBuilder<EditProfileBloc, EditProfileState>(
+                  builder: (context, state) {
+                    String name = "";
+                    name = state is EditProfileDataSuccess ? state.name : "";
+                    return MyEditProfileWidget(
+                      title: "Name",
+                      value: name,
+                      destinationPage: const Name(),
+                    );
+                  },
                 ),
-                MyEditProfileWidget(
-                  title: "Username",
-                  value: state is EditProfileDataSuccess ? state.username : "",
-                  destinationPage: const UserName(),
+                BlocBuilder<EditProfileBloc, EditProfileState>(
+                  builder: (context, state) {
+                    String username = "";
+                    username =
+                        state is EditProfileDataSuccess ? state.username : "";
+                    return MyEditProfileWidget(
+                      title: "Username",
+                      value: username,
+                      destinationPage: const UserName(),
+                    );
+                  },
                 ),
                 const MyEditProfileWidget(
                   title: "Pronouns",
@@ -115,6 +128,18 @@ class _EditProfileState extends State<EditProfile> {
                   value: "Add Links",
                   destinationPage: Bio(),
                 ),
+                const Text(
+                  "Switch to professional account",
+                  style: TextStyle(color: Colors.blue, fontSize: 18),
+                ),
+                const Text(
+                  "Personal information setting",
+                  style: TextStyle(color: Colors.blue, fontSize: 18),
+                ),
+                const Text(
+                  "Sign up for Meta version",
+                  style: TextStyle(color: Colors.blue, fontSize: 18),
+                )
               ],
             );
           },
