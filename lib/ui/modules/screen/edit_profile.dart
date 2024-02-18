@@ -118,10 +118,16 @@ class _EditProfileState extends State<EditProfile> {
                   value: "Add pronouns",
                   destinationPage: Bio(),
                 ),
-                const MyEditProfileWidget(
-                  title: "Bio",
-                  value: "Add bio",
-                  destinationPage: Bio(),
+                BlocBuilder<EditProfileBloc, EditProfileState>(
+                  builder: (context, state) {
+                    String bio = "";
+                    bio = state is EditProfileDataSuccess ? state.bio : "";
+                    return MyEditProfileWidget(
+                      title: "Bio",
+                      value: bio,
+                      destinationPage: const Bio(),
+                    );
+                  },
                 ),
                 const MyEditProfileWidget(
                   title: "Links",

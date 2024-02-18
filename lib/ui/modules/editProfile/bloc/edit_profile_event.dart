@@ -10,9 +10,10 @@ sealed class EditProfileEvent extends Equatable {
 final class EditProfileDataRequested extends EditProfileEvent {
   final String name;
   final String username;
-  // final String bio;
+  final String bio;
 
-  const EditProfileDataRequested({required this.name, required this.username});
+  const EditProfileDataRequested(
+      {required this.bio, required this.name, required this.username});
 }
 
 class CheckEditProfileData extends EditProfileEvent {

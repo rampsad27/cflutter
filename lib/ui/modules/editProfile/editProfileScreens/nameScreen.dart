@@ -92,7 +92,7 @@ class _NameState extends State<Name> {
               ),
               onFieldSubmitted: (value) => context.read<EditProfileBloc>().add(
                   EditProfileDataRequested(
-                      name: _controller.text, username: "")),
+                      name: _controller.text, username: "", bio: "")),
             ),
             const SizedBox(height: 20),
           ],

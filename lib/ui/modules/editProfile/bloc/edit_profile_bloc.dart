@@ -19,15 +19,15 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
         if (event.username.isNotEmpty) {
           username = event.username;
         }
-        // if (event.username.isNotEmpty) {
-        //   username = event.bio;
-        // }
+        if (event.bio.isNotEmpty) {
+          username = event.bio;
+        }
         //   await ProfileRepository.saveUserProfileInfo(name, username);
         //   emit(const EditProfileDataSuccess());
         //   add(const EditProfileDataRequested());
 
         // await Future.delayed(const Duration(seconds: 2));
-        await profileRepository.saveUserProfileInfo(name, username);
+        await profileRepository.saveUserProfileInfo(name, username, bio);
         add(CheckEditProfileData());
         // add(EditProfileDataRequested());
       } catch (e) {
@@ -39,10 +39,11 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       await Future.delayed(const Duration(seconds: 1));
       // bool isLoggedIn = await authenticationRepository.isUserLoggedIn();
       var temp = profileRepository.getUserProfileInfo();
-      emit(EditProfileDataSuccess(name: temp.name, username: temp.username));
+      emit(EditProfileDataSuccess(
+          name: temp.name, username: temp.username, bio: temp.bio));
     });
   }
   String name = "";
   String username = "";
-//   String bio = "";
+  String bio = "";
 }
