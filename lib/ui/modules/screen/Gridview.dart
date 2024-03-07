@@ -1,11 +1,19 @@
 import 'package:extraaa/ui/modules/book_list_data.dart';
 import 'package:flutter/material.dart';
 
-class GridViewShow extends StatelessWidget {
+class GridViewShow extends StatefulWidget {
+  final Function(bool isSelected)? onSelectionChanged;
   const GridViewShow({
     super.key,
+    this.onSelectionChanged,
   });
 
+  @override
+  State<GridViewShow> createState() => _GridViewShowState();
+}
+
+class _GridViewShowState extends State<GridViewShow> {
+  int? _selectedBookIndex;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -23,15 +31,34 @@ class GridViewShow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                    image: NetworkImage(book.coverImage),
-                    fit: BoxFit.cover,
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: NetworkImage(book.coverImage),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    right: -9,
+                    top: -9,
+                    child: Radio<int>(
+                      value: index,
+                      groupValue: _selectedBookIndex,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedBookIndex = value;
+                        });
+                        widget.onSelectionChanged?.call(value != null);
+                      },
+                      activeColor: const Color.fromARGB(255, 24, 112, 183),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 4),

@@ -94,14 +94,14 @@ class BookListData {
         name: "The Middle Stories",
         author: "Sheila Heti",
         coverImage:
-            "http://images.amazon.com/images/P/0887841740.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "House of Anansi Press",
         yearOfPub: "2004"),
     BookListModel(
         name: "Jane Doe",
         author: "R. J. Kaiser",
         coverImage:
-            "http://images.amazon.com/images/P/1552041778.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Mira Books",
         yearOfPub: "1999"),
     BookListModel(
@@ -109,35 +109,35 @@ class BookListData {
             "A Second Chicken Soup for the Woman's Soul (Chicken Soup for the Soul Series)",
         author: "Jack Canfield",
         coverImage:
-            "http://images.amazon.com/images/P/1558746218.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Health Communications",
         yearOfPub: "1998"),
     BookListModel(
         name: "The Witchfinder (Amos Walker Mystery Series)",
         author: "Loren D. Estleman",
         coverImage:
-            "http://images.amazon.com/images/P/1567407781.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Brilliance Audio - Trade",
         yearOfPub: "1998"),
     BookListModel(
         name: "More Cunning Than Man: A Social History of Rats and Man",
         author: "Robert Hendrickson",
         coverImage:
-            "http://images.amazon.com/images/P/1575663937.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Kensington Publishing Corp.",
         yearOfPub: "1999"),
     BookListModel(
         name: "Goodbye to the Buttermilk Sky",
         author: "Julia Oliver",
         coverImage:
-            "http://images.amazon.com/images/P/1881320189.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "River City Pub",
         yearOfPub: "1994"),
     BookListModel(
         name: "The Testament",
         author: "John Grisham",
         coverImage:
-            "http://images.amazon.com/images/P/0440234743.01.MZZZZZZZ.jpg",
+            "https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg",
         publisher: "Dell",
         yearOfPub: "1999"),
   ];

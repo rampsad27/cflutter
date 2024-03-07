@@ -3,9 +3,15 @@ import 'package:extraaa/ui/modules/screen/booklist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _isPressed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +45,28 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             ),
-            const Expanded(child: BookList()),
+            Expanded(
+              child: BookList(
+                onSelectionChanged: (isSelected) {
+                  setState(() {
+                    _isPressed = isSelected;
+                  });
+                },
+              ),
+            ),
             const SizedBox(height: 10),
-            Container(
+            InkWell(
+              onTap: () {},
+              child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(32),
-                    color: Colors.blue),
+                  borderRadius: BorderRadiusDirectional.circular(32),
+                  color: _isPressed ? Colors.blue : Colors.grey,
+                ),
                 width: double.infinity,
                 height: 40,
-                child: const Center(child: Text("Continue"))),
+                child: const Center(child: Text("Continue")),
+              ),
+            ),
           ],
         ),
       ),

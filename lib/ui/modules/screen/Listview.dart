@@ -1,11 +1,19 @@
 import 'package:extraaa/ui/modules/book_list_data.dart';
 import 'package:flutter/material.dart';
 
-class ListViewShow extends StatelessWidget {
+class ListViewShow extends StatefulWidget {
+  final Function(bool isSelected)? onSelectionChanged;
   const ListViewShow({
     super.key,
+    this.onSelectionChanged,
   });
 
+  @override
+  State<ListViewShow> createState() => _ListViewShowState();
+}
+
+class _ListViewShowState extends State<ListViewShow> {
+  int? _selectedBookIndex;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -46,6 +54,7 @@ class ListViewShow extends StatelessWidget {
                           color: Color.fromARGB(179, 100, 100, 100)),
                       overflow: TextOverflow.ellipsis,
                     ),
+                    // const Spacer(),
                     Row(
                       children: [
                         Text(
@@ -67,6 +76,17 @@ class ListViewShow extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              Radio<int>(
+                value: index,
+                groupValue: _selectedBookIndex,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedBookIndex = value;
+                  });
+                  widget.onSelectionChanged?.call(value != null);
+                },
+                activeColor: Colors.blue,
               ),
             ],
           ),
