@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:juneeight/di/service_locator.dart';
 import 'package:juneeight/model/post_model.dart';
 import 'package:juneeight/repository/home_repository.dart';
+import 'package:juneeight/repository/news_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'home_event.dart';
@@ -57,4 +58,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   final HomeRepository homeRepository = getIt.get<HomeRepository>();
+  // final NewsRepository newsRepository = getIt.get<NewsRepository>();
 }

@@ -41,11 +41,11 @@ class AuthInterceptor extends Interceptor {
       "YOUR_ACCESS_TOKEN"; // Assume this is securely stored and initialized elsewhere
   String _refreshToken = "YOUR_REFRESH_TOKEN";
 
-  @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers['Authorization'] = 'Bearer $_accessToken';
-    return super.onRequest(options, handler);
-  }
+  // @override
+  // void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+  //   options.headers['Authorization'] = 'Bearer $_accessToken';
+  //   return super.onRequest(options, handler);
+  // }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {

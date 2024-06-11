@@ -20,10 +20,10 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
-  String get title => throw _privateConstructorUsedError;
-  String get body => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get body => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $PostModelCopyWith<$Res> {
   factory $PostModelCopyWith(PostModel value, $Res Function(PostModel) then) =
       _$PostModelCopyWithImpl<$Res, PostModel>;
   @useResult
-  $Res call({String title, String body, int id, int userId});
+  $Res call({int id, int userId, String title, String body});
 }
 
 /// @nodoc
@@ -52,20 +52,12 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? body = null,
     Object? id = null,
     Object? userId = null,
+    Object? title = null,
+    Object? body = null,
   }) {
     return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      body: null == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -74,6 +66,14 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -86,7 +86,7 @@ abstract class _$$PostModelImplCopyWith<$Res>
       __$$PostModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String body, int id, int userId});
+  $Res call({int id, int userId, String title, String body});
 }
 
 /// @nodoc
@@ -100,20 +100,12 @@ class __$$PostModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? body = null,
     Object? id = null,
     Object? userId = null,
+    Object? title = null,
+    Object? body = null,
   }) {
     return _then(_$PostModelImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      body: null == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -122,6 +114,14 @@ class __$$PostModelImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -130,26 +130,26 @@ class __$$PostModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PostModelImpl implements _PostModel {
   const _$PostModelImpl(
-      {required this.title,
-      required this.body,
-      required this.id,
-      required this.userId});
+      {required this.id,
+      required this.userId,
+      required this.title,
+      required this.body});
 
   factory _$PostModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostModelImplFromJson(json);
 
   @override
-  final String title;
-  @override
-  final String body;
-  @override
   final int id;
   @override
   final int userId;
+  @override
+  final String title;
+  @override
+  final String body;
 
   @override
   String toString() {
-    return 'PostModel(title: $title, body: $body, id: $id, userId: $userId)';
+    return 'PostModel(id: $id, userId: $userId, title: $title, body: $body)';
   }
 
   @override
@@ -157,15 +157,15 @@ class _$PostModelImpl implements _PostModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PostModelImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.body, body) || other.body == body) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.body, body) || other.body == body));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, body, id, userId);
+  int get hashCode => Object.hash(runtimeType, id, userId, title, body);
 
   @JsonKey(ignore: true)
   @override
@@ -183,22 +183,22 @@ class _$PostModelImpl implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   const factory _PostModel(
-      {required final String title,
-      required final String body,
-      required final int id,
-      required final int userId}) = _$PostModelImpl;
+      {required final int id,
+      required final int userId,
+      required final String title,
+      required final String body}) = _$PostModelImpl;
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$PostModelImpl.fromJson;
 
   @override
-  String get title;
-  @override
-  String get body;
-  @override
   int get id;
   @override
   int get userId;
+  @override
+  String get title;
+  @override
+  String get body;
   @override
   @JsonKey(ignore: true)
   _$$PostModelImplCopyWith<_$PostModelImpl> get copyWith =>
