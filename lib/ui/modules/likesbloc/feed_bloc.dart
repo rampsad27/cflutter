@@ -8,13 +8,17 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
   FeedBloc() : super(FeedInitial()) {
     on<FeedLikeCountIncrementRequested>((event, emit) {
       var newLikeCount = event.likesCount + 1;
-      emit(FeedLikeCountUpdated(likesCount: newLikeCount));
-      emit(FeedLoadSuccess(likesCount: newLikeCount));
+      emit(FeedLikeCountUpdated(
+          postIndex: event.postIndex, likesCount: newLikeCount));
+      emit(FeedLoadSuccess(
+          postIndex: event.postIndex, likesCount: newLikeCount));
     });
     on<FeedLikeCountDecrementRequested>((event, emit) {
       var newLikeCount = event.likesCount;
-      emit(FeedLikeCountUpdated(likesCount: newLikeCount));
-      emit(FeedLoadSuccess(likesCount: newLikeCount));
+      emit(FeedLikeCountUpdated(
+          postIndex: event.postIndex, likesCount: newLikeCount));
+      emit(FeedLoadSuccess(
+          postIndex: event.postIndex, likesCount: newLikeCount));
     });
   }
 }

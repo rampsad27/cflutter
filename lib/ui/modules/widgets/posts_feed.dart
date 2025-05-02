@@ -13,20 +13,30 @@ import 'package:share_plus/share_plus.dart';
 class PostsFeed extends StatefulWidget {
   const PostsFeed({super.key, required this.postModelList});
   final List<PostModel> postModelList;
+
   @override
   State<PostsFeed> createState() => _PostsFeedState();
 }
 
 class _PostsFeedState extends State<PostsFeed> {
-  // bool isLiked = false;
-  int selectedIndex = -1;
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
+  // Store likes count for each post
+  Map<int, int> likesCountMap = {};
+
   void _onRefresh() async {
     await Future.delayed(const Duration(seconds: 2));
-
     _refreshController.refreshCompleted();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    for (int i = 0; i < widget.postModelList.length; i++) {
+      likesCountMap[i] = widget.postModelList[i].likes;
+    }
   }
 
   @override
@@ -56,203 +66,190 @@ class _PostsFeedState extends State<PostsFeed> {
               ),
             ),
           ),
-          // posts
           SliverList.builder(
             itemCount: widget.postModelList.length,
             itemBuilder: (context, index) {
               return Container(
-                  height: 610,
-                  margin: const EdgeInsets.only(bottom: 20),
-                  // color: const Color.fromARGB(255, 131, 170, 224),
-
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 18,
-                              backgroundImage: NetworkImage(
-                                  widget.postModelList[index].imagecUrl),
-                            ),
-                            const SizedBox(width: 8),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.postModelList[index].postedby,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                height: 610,
+                margin: const EdgeInsets.only(bottom: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 18,
+                            backgroundImage: NetworkImage(
+                                widget.postModelList[index].imagecUrl),
+                          ),
+                          const SizedBox(width: 8),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.postModelList[index].postedby,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                Text(
-                                  widget.postModelList[index].location,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            InkWell(
-                              onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled: true,
-                                  builder: (context) {
-                                    return const MyBottomSheet();
-                                  },
-                                );
-                              },
-                              child: const Icon(Icons.more_horiz_outlined),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      AspectRatio(
-                        aspectRatio: 1.0,
-                        child: Image.network(
-                          widget.postModelList[index].imageUrl,
-                          width: double.infinity,
-                          // height: 300,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      // const SizedBox(height: 10),
-                      const Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                BlocBuilder<FeedBloc, FeedState>(
-                                  builder: (context, state) {
-                                    return IconButton(
-                                      icon: widget.postModelList[index].isLiked
-                                          ? const Icon(Icons.favorite,
-                                              color: Colors.red)
-                                          : const Icon(Icons.favorite_border),
-                                      onPressed: () {
-                                        setState(() {
-                                          widget.postModelList[index] = widget
-                                              .postModelList[index]
-                                              .copyWith(
-                                            isLiked: !widget
-                                                .postModelList[index].isLiked,
-                                          );
-                                          //unliked
-                                          if (widget
-                                              .postModelList[index].isLiked) {
-                                            widget.postModelList[index] = widget
-                                                .postModelList[index]
-                                                .copyWith();
-                                            BlocProvider.of<FeedBloc>(context)
-                                                .add(
-                                              FeedLikeCountIncrementRequested(
-                                                likesCount: widget
-                                                    .postModelList[index].likes,
-                                              ),
-                                            );
-                                          } else {
-                                            widget.postModelList[index] = widget
-                                                .postModelList[index]
-                                                .copyWith();
-                                            BlocProvider.of<FeedBloc>(context)
-                                                .add(
-                                              FeedLikeCountDecrementRequested(
-                                                likesCount: widget
-                                                    .postModelList[index].likes,
-                                              ),
-                                            );
-                                          }
-                                        });
-                                      },
-                                    );
-                                  },
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.comment_outlined),
-                                  onPressed: () {},
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.send),
-                                  onPressed: () {
-                                    Share.share("send in messenger");
-                                  },
-                                ),
-                                const Spacer(),
-                                IconButton(
-                                  icon: const Icon(
-                                      Icons.bookmark_border_outlined),
-                                  onPressed: () {},
-                                ),
-                              ],
-                            ),
-                            BlocBuilder<FeedBloc, FeedState>(
-                              // buildWhen: (previous, current) =>
-                              //     current is FeedFailure,
-                              builder: (context, state) {
-                                if (state is FeedLoadSuccess) {
-                                  return Text("${state.likesCount} likes");
-                                } else {
-                                  return Text(
-                                      "${widget.postModelList[index].likes} likes");
-                                  // const Text("h likes");
-                                  // style: TextStyle(
-                                  //   fontSize: 11,
-                                  //   fontWeight: FontWeight.bold,
-                                  // ),
-                                }
-                              },
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.postModelList[index].postedby,
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                Expanded(
-                                  child: ReadMoreText(
-                                    widget.postModelList[index].caption,
-                                    trimLines: 2,
-                                    trimMode: TrimMode.Line,
-                                    trimCollapsedText: ' more',
-                                    trimExpandedText: ' less',
-                                    moreStyle: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    lessStyle: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              " View all ${widget.postModelList[index].comments} comments",
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Color.fromARGB(255, 156, 156, 156),
                               ),
-                            ),
-                          ],
-                        ),
+                              Text(
+                                widget.postModelList[index].location,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                isScrollControlled: true,
+                                builder: (context) {
+                                  return const MyBottomSheet();
+                                },
+                              );
+                            },
+                            child: const Icon(Icons.more_horiz_outlined),
+                          ),
+                        ],
                       ),
-                    ],
-                  ));
+                    ),
+                    const SizedBox(height: 8),
+                    AspectRatio(
+                      aspectRatio: 1.0,
+                      child: Image.network(
+                        widget.postModelList[index].imageUrl,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              BlocBuilder<FeedBloc, FeedState>(
+                                builder: (context, state) {
+                                  return IconButton(
+                                    icon: widget.postModelList[index].isLiked
+                                        ? const Icon(Icons.favorite,
+                                            color: Colors.red)
+                                        : const Icon(Icons.favorite_border),
+                                    onPressed: () {
+                                      setState(() {
+                                        widget.postModelList[index] = widget
+                                            .postModelList[index]
+                                            .copyWith(
+                                          isLiked: !widget
+                                              .postModelList[index].isLiked,
+                                        );
+
+                                        if (widget
+                                            .postModelList[index].isLiked) {
+                                          likesCountMap[index] =
+                                              (likesCountMap[index] ?? 0);
+                                          BlocProvider.of<FeedBloc>(context)
+                                              .add(
+                                            FeedLikeCountIncrementRequested(
+                                              postIndex: index,
+                                              likesCount: likesCountMap[index]!,
+                                            ),
+                                          );
+                                        } else {
+                                          likesCountMap[index] =
+                                              (likesCountMap[index] ?? 1);
+                                          BlocProvider.of<FeedBloc>(context)
+                                              .add(
+                                            FeedLikeCountDecrementRequested(
+                                              postIndex: index,
+                                              likesCount: likesCountMap[index]!,
+                                            ),
+                                          );
+                                        }
+                                      });
+                                    },
+                                  );
+                                },
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.comment_outlined),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.send),
+                                onPressed: () {
+                                  Share.share("send in messenger");
+                                },
+                              ),
+                              const Spacer(),
+                              IconButton(
+                                icon:
+                                    const Icon(Icons.bookmark_border_outlined),
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                          BlocBuilder<FeedBloc, FeedState>(
+                            builder: (context, state) {
+                              if (state is FeedLoadSuccess &&
+                                  state.postIndex == index) {
+                                return Text("${state.likesCount} likes");
+                              } else {
+                                return Text("${likesCountMap[index]} likes");
+                              }
+                            },
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.postModelList[index].postedby,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: ReadMoreText(
+                                  widget.postModelList[index].caption,
+                                  trimLines: 2,
+                                  trimMode: TrimMode.Line,
+                                  trimCollapsedText: ' more',
+                                  trimExpandedText: ' less',
+                                  moreStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  lessStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            " View all ${widget.postModelList[index].comments} comments",
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(255, 156, 156, 156),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
             },
           ),
         ],

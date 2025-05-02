@@ -1,41 +1,31 @@
 part of 'feed_bloc.dart';
 
 abstract class FeedState extends Equatable {
-  // const FeedState();
-}
-
-final class FeedInitial extends FeedState {
-  @override
-  List<Object?> get props => [];
-}
-
-final class FeedLoadInProgress extends FeedState {
-  @override
-  List<Object?> get props => [];
-}
-
-final class FeedFailure extends FeedState {
-  final String message;
-  FeedFailure({required this.message});
+  const FeedState();
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
-final class FeedLoadSuccess extends FeedState {
-  final int likesCount;
-  FeedLoadSuccess({
-    required this.likesCount,
-  });
-  @override
-  List<Object?> get props => [likesCount];
-}
+class FeedInitial extends FeedState {}
 
 class FeedLikeCountUpdated extends FeedState {
+  final int postIndex;
   final int likesCount;
 
-  FeedLikeCountUpdated({required this.likesCount});
+  const FeedLikeCountUpdated(
+      {required this.postIndex, required this.likesCount});
 
   @override
-  List<Object?> get props => [likesCount];
+  List<Object> get props => [postIndex, likesCount];
+}
+
+class FeedLoadSuccess extends FeedState {
+  final int postIndex;
+  final int likesCount;
+
+  const FeedLoadSuccess({required this.postIndex, required this.likesCount});
+
+  @override
+  List<Object> get props => [postIndex, likesCount];
 }

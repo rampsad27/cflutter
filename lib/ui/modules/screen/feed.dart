@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:ig/ui/data/feed_data.dart';
 import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
+import 'package:ig/ui/modules/theme/bloc/theme_state.dart';
 import 'package:ig/ui/modules/theme/configs/app_theme.dart';
 
 import 'package:ig/ui/modules/widgets/bottom_navigation.dart';
@@ -38,27 +39,60 @@ class _FeedScreenState extends State<FeedScreen> {
               ),
               height: 40,
               width: 96,
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      context.read<ThemeBloc>().add(
-                          ThemeChangeRequested(themeData: AppTheme.lightTheme));
-                    },
-                    icon: const Icon(
-                      Icons.sunny,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      context.read<ThemeBloc>().add(
-                          ThemeChangeRequested(themeData: AppTheme.darkTheme));
-                    },
-                    icon: const Icon(
-                      Icons.nightlight_round_outlined,
-                    ),
-                  ),
-                ],
+              child: BlocBuilder<ThemeBloc, ThemeState>(
+                builder: (context, state) {
+                  if (state is ThemeChanged) {
+                    return Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            context.read<ThemeBloc>().add(
+                                  ThemeChangeRequested(
+                                    themeData: state.isDarkMode
+                                        ? AppTheme.lightTheme()
+                                        : AppTheme.darkTheme(),
+                                  ),
+                                );
+                          },
+                          icon: Icon(
+                            state.isDarkMode
+                                ? Icons.sunny
+                                : Icons.nightlight_round_outlined,
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            context.read<ThemeBloc>().add(
+                                  ThemeChangeRequested(
+                                    themeData: AppTheme.lightTheme(),
+                                  ),
+                                );
+                          },
+                          icon: const Icon(
+                            Icons.sunny,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            context.read<ThemeBloc>().add(
+                                  ThemeChangeRequested(
+                                    themeData: AppTheme.darkTheme(),
+                                  ),
+                                );
+                          },
+                          icon: const Icon(
+                            Icons.nightlight_round_outlined,
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                },
               ),
             ),
           ],

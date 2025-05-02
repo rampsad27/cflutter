@@ -1,21 +1,30 @@
 part of 'feed_bloc.dart';
 
-sealed class FeedEvent {}
+abstract class FeedEvent extends Equatable {
+  const FeedEvent();
+
+  @override
+  List<Object> get props => [];
+}
 
 class FeedLikeCountIncrementRequested extends FeedEvent {
+  final int postIndex;
   final int likesCount;
-  FeedLikeCountIncrementRequested({
-    required this.likesCount,
-  });
+
+  const FeedLikeCountIncrementRequested(
+      {required this.postIndex, required this.likesCount});
+
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [postIndex, likesCount];
 }
 
 class FeedLikeCountDecrementRequested extends FeedEvent {
+  final int postIndex;
   final int likesCount;
-  FeedLikeCountDecrementRequested({
-    required this.likesCount,
-  });
+
+  const FeedLikeCountDecrementRequested(
+      {required this.postIndex, required this.likesCount});
+
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [postIndex, likesCount];
 }

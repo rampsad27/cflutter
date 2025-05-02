@@ -12,9 +12,12 @@ import 'package:ig/repository/profile_repository.dart';
 import 'package:ig/ui/modules/screen/edit_profile.dart';
 import 'package:ig/ui/modules/screen/feed.dart';
 import 'package:ig/ui/modules/screen/myprofile.dart';
-
 import 'package:ig/ui/modules/theme/bloc/theme_bloc.dart';
+import 'package:ig/ui/modules/theme/bloc/theme_state.dart';
 import 'package:ig/ui/modules/theme/configs/app_theme.dart';
+
+import 'package:ig/ui/modules/theme_old/bloc/theme_bloc.dart';
+import 'package:ig/ui/modules/theme_old/configs/app_theme.dart';
 
 import 'package:ig/ui/modules/screen/login.dart';
 // import 'package:ig/ui/modules/screen/login.dart';
@@ -41,12 +44,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(
-            create: (context) => ThemeBloc()
-              ..add(
-                ThemeChangeRequested(themeData: AppTheme.lightTheme),
-              ),
-          ),
+          BlocProvider(create: (context) => ThemeBloc()),
           BlocProvider(
             create: (context) => LoginBloc(
                 authenticationRepository:
@@ -65,8 +63,10 @@ class MyApp extends StatelessWidget {
           builder: (context, themeState) {
             return MaterialApp(
               theme: themeState is ThemeChanged
-                  ? themeState.themeData
-                  : AppTheme.lightTheme,
+                  ? themeState.themeMode == ThemeMode.dark
+                      ? AppTheme.darkTheme()
+                      : AppTheme.lightTheme()
+                  : AppTheme.lightTheme(),
               home: BlocListener<LoginBloc, LoginState>(
                 listenWhen: (previous, current) => current is UnAuthenticated,
                 listener: (context, state) {

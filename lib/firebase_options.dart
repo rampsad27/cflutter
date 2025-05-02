@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '22043976645',
     projectId: 'instagramnew-d763e',
     storageBucket: 'instagramnew-d763e.appspot.com',
+    androidClientId: '22043976645-7bv1a5j5nht0pvviscuqjio5ofqt2m9o.apps.googleusercontent.com',
     iosClientId: '22043976645-esduq81fvd8bqfu99jn6dle40is0q5s1.apps.googleusercontent.com',
     iosBundleId: 'com.example.ig',
   );

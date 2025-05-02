@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ig/repository/googleauth_repository.dart';
 import 'package:ig/ui/modules/loginauth/bloc/login_bloc.dart';
-
 import 'package:ig/ui/modules/screen/feed.dart';
 
-// import 'package:ig/ui/modules/widgets/line.dart';
-
+// LoginPage widget for user authentication
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -15,29 +13,34 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // Controllers for email and password fields
   final TextEditingController _econtroller = TextEditingController();
   final TextEditingController _pcontroller = TextEditingController();
+  // Form key for form validation
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  // Flag to toggle password visibility
   bool _isPasswordVisible = false;
 
   @override
   void dispose() {
     super.dispose();
+    // Dispose controllers to free up resources
     _econtroller.dispose();
     _pcontroller.dispose();
   }
 
+  // Function to show the "Forgot Password" dialog
   _showForgotPasswordDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: const Text("OK"),
+          content: const Text("OK"), // Placeholder text for now
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(); // Close the dialog
               },
               child: const Text("OK"),
             ),
@@ -47,10 +50,12 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // Function to handle login button press
   void _login() {
     if (_formKey.currentState!.validate()) {
       String email = _econtroller.text;
       String password = _pcontroller.text;
+      // Trigger LoginRequested event in LoginBloc
       context
           .read<LoginBloc>()
           .add(LoginRequested(email: email, password: password));
@@ -60,6 +65,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+    // Check if user is already logged in when the widget is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<LoginBloc>().add(CheckLoggedInUser());
     });
@@ -69,18 +75,19 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
+        // Navigate to FeedScreen on successful login
         if (state is LoginSuccess) {
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => const FeedScreen()));
-        } else if (state is LoginFailure) {
+        }
+        // Show error message if login fails
+        else if (state is LoginFailure) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.message)));
         }
       },
       child: Scaffold(
-        // backgroundColor: const Color.fromARGB(255, 131, 94, 94),
         body: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
               child: Form(
@@ -92,21 +99,20 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Instagram",
+                          "Instagram", // Title text
                           style: TextStyle(
                             fontFamily: "S",
                             fontSize: 60,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
+                        // Email or username input field
                         TextFormField(
                           controller: _econtroller,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "Enter data";
+                              return "Enter data"; // Validation message
                             }
                             return null;
                           },
@@ -114,12 +120,13 @@ class _LoginPageState extends State<LoginPage> {
                             hintText: "Phone number, username or email",
                           ),
                         ),
+                        // Password input field
                         TextFormField(
                           controller: _pcontroller,
                           obscureText: !_isPasswordVisible,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "Wrong password";
+                              return "Wrong password"; // Validation message
                             }
                             return null;
                           },
@@ -141,6 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(height: 10),
+                        // "Forgot password?" link
                         InkWell(
                           onTap: _showForgotPasswordDialog,
                           child: const Align(
@@ -154,6 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(height: 20),
+                        // Login button with loading indicator
                         BlocBuilder<LoginBloc, LoginState>(
                           builder: (context, state) {
                             return ElevatedButton(
@@ -185,6 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                         const SizedBox(height: 20),
+                        // Divider with "OR" text
                         const Row(
                           children: [
                             Expanded(
@@ -211,29 +221,14 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ],
                         ),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IconButton(
-                              onPressed: () {
-                                GoogleSignInRepository googleSignInRepository =
-                                    GoogleSignInRepository();
-                                googleSignInRepository.signUpWithGoogle();
-                              },
-                              icon: const Icon(
-                                Icons.g_mobiledata,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            const Text(
-                              "Continue as Google",
-                              style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 16,
-                              ),
-                            ),
+                            // Placeholder for Google Sign-In button
+                            // Uncomment and add functionality if needed
                           ],
                         ),
+                        // SignUp with Email and Password
                         InkWell(
                           onTap: () async {
                             GoogleSignInRepository googleSignInRepository =
@@ -248,6 +243,7 @@ class _LoginPageState extends State<LoginPage> {
                                 TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ),
+                        // SignIn with Email and Password
                         InkWell(
                           onTap: () async {
                             GoogleSignInRepository googleSignInRepository =
@@ -268,16 +264,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            // Align(
-            //   alignment: Alignment.bottomCenter,
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(16.0),
-            // child:
-
-            // SizedBox(
-            //   height: MediaQuery.of(context).size.height * 0.13,
-            // ),
-
+            // Sign up prompt
             RichText(
               text: const TextSpan(
                 text: "Don't have an account? ",
@@ -292,8 +279,9 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            //   ),
-            // ),
+            const SizedBox(
+              height: 12,
+            )
           ],
         ),
       ),
